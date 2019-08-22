@@ -7,6 +7,10 @@
 
             <div class="">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#top_choice" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                  <%= image_tag("icons/award", size: "20x20") + " Editor choice"  %>
+                </a>
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="v-pills-home" aria-selected="true">
                   <%= image_tag("icons/radar", size: "20x20") + " Nearby me"  %>
                 </a>
@@ -27,7 +31,7 @@
             <%#= render_navigation %>
           <div class="row">
 
-            <div class="w-100 bg-white rounded-lg p-3 mb-3">
+            <div class="w-100 bg-white rounded-lg pt-3 pl-3 mb-3">
 
               <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-3", method: :get do %>
                 <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
@@ -35,59 +39,61 @@
               <% end %>
 
               <% if @count %>  
-              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Nice!</strong> We found <%= @count %> location.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  
+                  <% if @count >0 %>
+                  <strong>Nice!</strong> We found <%= @count %> location.
+                  <% else %>
+                  ---
+                  <% end %>
+
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
               <% end %>
             
             
-            <div class="btn-group d-flex pb-3 w-100 nav" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#home">Wish list
-              </button>
-              <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#menu2">Top choice
-              </button>
               
-              <button type="button" class="btn btn-outline-success btn-sm">Near me
-              </button>
-              <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#menu1">All</button>
-            </div> 
             </div> <!-- end white -->
-            
+            <div class="bg-white p-3 rounded-lg">
+              <div class="btn-group d-flex pb-3 w-100 nav" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#home">Wish list
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#menu2">Top choice
+                </button>
+                
+                <button type="button" class="btn btn-outline-success btn-sm">Near me
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#menu1">All</button>
+              </div> 
+
             <!-- Tab panes -->
             <div class="tab-content">
               <div class="tab-pane container active" id="home">
                 <div class="row">
-                  <div class="bg-white p-3 rounded-lg">
-                      <%= render @posts %>
-                  </div>
+                  <%= render @posts %>
                 </div>
                 <div class="apple_pagination">
-                  <%= will_paginate @posts %>
+                  <%#= will_paginate @posts %>
                 </div>
               </div>
               
               
               <div class="tab-pane container" id="menu1">
                 <div class="row">
-                  <div class="bg-white p-3 rounded-lg">
-                      <%= render @all_posts %></div>
-                  </div>  
+                  <%= render @all_posts %> 
                 </div>
+              </div>
                 
                 
               <div class="tab-pane container" id="menu2">
-                <div class="row">
-                  <div class="bg-white p-3 rounded-lg">
-                      <%= render @top5posts %></div>
-                  </div>  
-                </div>
-                
-                  
+                <div class="row"> 
+                  <%= render @top5posts %>
+                </div>  
               </div>
-            
+            </div>
+          </div>   <!-- end white -->
 
 
 

@@ -1,29 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="bg-white p-3 rounded-lg">
+      <h5><%= @post.title %></h5>
+  
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+  <p>
+    <strong>Content:</strong>
+    <%= @post.content %>
+  </p>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @post.image_url %>
-</p>
+  <p>
+    <strong>Image url:</strong>
+    <%= @post.image_url %>
+  </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @post.category_id %>
-</p>
+  <p>
+    <strong>Category:</strong>
+    <%= @post.category_id %>
+  </p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @post.rating %>
-</p>
+  <p>
+    <strong>Rating:</strong>
+    <%= @post.rating %>
+  </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+    <%= @post.body %>
+
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+
+  </div>
+
+</div>
+
+
