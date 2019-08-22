@@ -1,0 +1,19 @@
+<div class="media border-bottom mb-3 pb-3">
+  <img class="mr-3 img-fluid rounded align-self-center" src="<%= post.image_url %>" alt="Generic placeholder image" style="width: 120px; height: 120px;  object-fit: cover;">
+  <div class="media-body">
+    <h5 class="mt-0"><%= post.title %></h5>
+    <%= post.content %></br>
+
+    <span class="badge badge-secondary"># tag1</span>
+    <span class="badge badge-secondary"># tag2</span>
+    <span class="badge badge-secondary"># tag1</span>
+
+    <span class="badge  badge-warning">Spacious</span>
+    <span class="badge  badge-success">Pizza</span>
+    <span class="badge  badge-success">Ribs</span></br>
+    <span class="stars-container stars-80">★★★★★</span>
+  </div>
+
+        <%#= link_to 'Show', post, class: "btn btn-secondary" %></td>
+        <%#= link_to 'Edit', edit_post_path(post), class: "btn btn-secondary" %></td>
+</div>

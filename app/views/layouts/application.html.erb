@@ -4,13 +4,40 @@
     <title>Apptest66</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
+  <body style="background-color: #e9ebee">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <%= image_tag("icons/papaya", size: "30x30") + " food insider"  %>
+      </a>
+      
+      <%= link_to 'New Post', new_post_path, class: "btn btn-outline-success" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Sign in <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          
+        </ul>
+      </div>
+      
+      
+    </nav>
+  
+    <div class="container"> 
     <div class="main-carousel mb-3" > 
       <div class="carousel-cell">
         <div class="card  "  >
@@ -53,7 +80,9 @@
         </div>
       </div>
 
-    </div> <!-- end carousel -->   
-    <%= yield %>
+    </div> <!-- end carousel -->        
+    </div> <!-- end container -->
+    
+  <%= yield %>
   </body>
 </html>

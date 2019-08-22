@@ -4,7 +4,18 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    if params[:filter]
+      @posts = Post.search_by_title(params[:filter])
+      @count = @posts.count
+    else
+      #@posts = Post.all
+      @posts = Post.paginate(:page => params[:page], :per_page => 3)
+      redirect_to root_path if @posts.empty?
+    end
+
+    @top5posts = Post.order('title DESC').limit(5)
+    @all_posts = Post.all
   end
 
   # GET /posts/1
