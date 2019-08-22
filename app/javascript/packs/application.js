@@ -16,4 +16,19 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import 'bootstrap'
+import 'bootstrap';
+
+import 'flickity';
+
+var Flickity = require('flickity');
+document.addEventListener("turbolinks:load", function() {
+	var elem = document.querySelector('.main-carousel');
+	var flkty = new Flickity( elem, {
+	  // options
+	  freeScroll: true,
+	  contain: true,
+	  pageDots: false, 
+	  prevNextButtons: false
+	});
+
+});
