@@ -19,18 +19,4 @@ require("@rails/actiontext")
 
 import 'bootstrap';
 
-import 'flickity';
-
-var Flickity = require('flickity');
-document.addEventListener("turbolinks:load", function() {
-	var elem = document.querySelector('.main-carousel');
-	var flkty = new Flickity( elem, {
-	  // options
-	  freeScroll: true,
-	  contain: true,
-	  pageDots: false, 
-	  prevNextButtons: false
-	});
-
-});
-
+//import 'flickity';

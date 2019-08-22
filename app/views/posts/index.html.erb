@@ -30,7 +30,7 @@
             <div class="w-100 bg-white rounded-lg p-3 mb-3">
 
               <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-3", method: :get do %>
-                <%= text_field_tag "filter", params[:filter], placeholder: "Enter user's name or surname", class: "form-control mr-sm-2" %>
+                <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
                 <%= submit_tag "Search!", class: "btn btn-primary my-2 my-sm-0" %>
               <% end %>
 
@@ -45,10 +45,11 @@
             
             
             <div class="btn-group d-flex pb-3 w-100 nav" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#menu2">Top choice
-              </button>
               <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#home">Wish list
               </button>
+              <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#menu2">Top choice
+              </button>
+              
               <button type="button" class="btn btn-outline-success btn-sm">Near me
               </button>
               <button type="button" class="btn btn-outline-success btn-sm" data-toggle="pill" href="#menu1">All</button>
