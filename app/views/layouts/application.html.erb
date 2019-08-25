@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,8 +21,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Sign in <span class="sr-only">(current)</span></a>
+          <li class="nav-item active">           
+            
+            <a class="nav-link" href="#">
+              <i class="fal fa-user"></i> 
+              Sign in <span class="sr-only">(current)</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Blog</a>
@@ -32,20 +35,50 @@
 
             <a class="nav-link" href="#">
             <%= image_tag("icons/email", size: "20x20", class: "") + " Notification"  %>
-            <i class="fa fa-envelope-o" style="font-size:20px; color:green;"></i>
+            <i class="fa fa-envelope-o" aria-hidden="true" style="font-size:20px; color:green;"></i>
             </a>
 
             <a class="nav-link" href="#">
-            <%= image_tag("icons/envelope", size: "20x20", class: "") + " Email"  %>
+            <%= image_tag("icons/envelope", size: "20x20"
+            ) + " Email"  %>
         
             </a>
             
-            <a class="nav-link" href="#"><i class="fa fa-envelope"> </i>
+            <a class="nav-link" href="#"><i class="fa fa-envelope" style="font-size:20px;"> </i>
               Mail
             </a>
-            <%= link_to 'test', new_post_path, class: "nav-link" %>
+             <a class="nav-link" href="#"><i class="fas fa-envelope" style="font-size:20px; color:green;"></i> Mail
+             </a>
+
+            
+            
+            <%= button_to "New", new_post_path,  :method => :get  %>
+            <%= link_to 'New Post', new_post_path, class: "btn btn-outline-success", :method => :get  %>
+                <i class="fal fa-pen"></i>
+            <%# end %>
+
+            <%= button_to "Newvv", {controller: "posts", action: "new" }, form_class: "new-thing" %>
+            
             <i class="fal fa-envelope"> blah blah</i>
 
+            <i class="fas fa-user-circle"></i>
+            <i class="fal fa-user-circle"></i>
+
+            <span class="fa-layers fa-fw" style="background:MistyRose">
+              <i class="fas fa-envelope"></i>
+              <span class="fa-layers-counter" style="background:Tomato">1,419</span>
+            </span>
+
+            <div class="fa-3x">
+              <i class="fas fa-spinner fa-spin"></i>
+              <i class="fas fa-circle-notch fa-spin"></i>
+              <i class="fas fa-sync fa-spin"></i>
+              <i class="fas fa-cog fa-spin"></i>
+              <i class="fas fa-spinner fa-pulse"></i>
+              <i class="fas fa-stroopwafel fa-spin"></i>
+            </div>
+            
+            
             
           </li>
 

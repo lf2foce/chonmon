@@ -20,3 +20,8 @@ require("@rails/actiontext")
 import 'bootstrap';
 
 //import 'flickity';
+//its worked import FA
+import "./FontAwesome/fontawesome";
+import "./FontAwesome/light";
+import "./FontAwesome/regular";
+import "./FontAwesome/solid";
