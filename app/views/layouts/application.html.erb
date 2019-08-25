@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -30,16 +31,31 @@
           <li class="nav-item">
 
             <a class="nav-link" href="#">
-            <%= image_tag("icons/mail", size: "20x20") + " Notification"  %>
+            <%= image_tag("icons/email", size: "20x20", class: "") + " Notification"  %>
+            <i class="fa fa-envelope-o" style="font-size:20px; color:green;"></i>
             </a>
+
+            <a class="nav-link" href="#">
+            <%= image_tag("icons/envelope", size: "20x20", class: "") + " Email"  %>
+        
+            </a>
+            
+            <a class="nav-link" href="#"><i class="fa fa-envelope"> </i>
+              Mail
+            </a>
+            <%= link_to 'test', new_post_path, class: "nav-link" %>
+            <i class="fal fa-envelope"> blah blah</i>
+
+            
           </li>
 
           
         </ul>
       </div>
-      
+
       
     </nav>
+  
 
     <div class="jumbotron jumbotron-fluid" style="background-image: url('https://images.unsplash.com/photo-1483664852095-d6cc6870702d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); object-fit: cover; background-repeat: no-repeat; background-size: 100%; background-position: center center;">
       <div class="container">
