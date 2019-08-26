@@ -13,12 +13,16 @@
 
                 <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#top_choice" role="tab" aria-controls="v-pills-home" aria-selected="true">
                   <%= image_tag("icons/award", size: "20x20") + " Editor choice"  %>
+                  
                 </a>
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="v-pills-home" aria-selected="true">
                   <%= image_tag("icons/radar", size: "20x20") + " Nearby me"  %>
+                  <i class="fal fa-coffee fa-fw" style="font-size:1rem;"></i> 
                 </a>
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#menu2" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                  <%= image_tag("icons/star", size: "20x20") + " Highest rating"  %></a>
+                  <%= image_tag("icons/star", size: "20x20") + " Highest rating"  %>
+                  </a>
+
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#menu1" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                   <%= image_tag("icons/fire", size: "20x20") + " Hot"  %></a>
               </div>
@@ -62,13 +66,16 @@
             <div class="bg-white p-3 rounded-lg">
               <div class="bg-white btn-group d-flex pb-3 w-100 nav sticky-top" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#home"><%= image_tag("icons/award", size: "20x20") + " Wish list"  %>
+                   <i class="fa fa-user"></i>
                 </button>
-                <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#menu2"><%= image_tag("icons/fire", size: "20x20") + " "  %></a>Top choice
+                <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#menu2"><%= image_tag("icons/fire", size: "20x20") + " "  %>Top choice
                 </button>
                 
-                <button type="button" class="btn btn-outline-success"><%= image_tag("icons/fire", size: "20x20") + " Hot"  %></a>
+                <button type="button" class="btn btn-outline-success"><%= image_tag("icons/fire", size: "20x20") + " Hot"  %>
                 </button>
-                <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#menu1"><%= image_tag("icons/fire", size: "20x20") + " "  %></a>All</button>
+                <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#menu1">
+                   <i class="fas fa-fire"></i> All posts
+                </button>
               </div> 
 
             <!-- Tab panes -->
