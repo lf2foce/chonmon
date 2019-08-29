@@ -34,21 +34,23 @@
         </div>
 
         <div class="col-lg-7">
-
-          <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">     
-              <a class="p-2 grab ein-active" href="#">
-                <i class="far fa-fire-alt" style="font-size: 1.5rem;"></i>
-                Wishlist
-              </a>
-              <a class="p-2 grab" href="#">Design</a>
-              <a class="p-2 grab" href="#">Business</a>
-              <a class="p-2 grab" href="#">Health</a>
-              <a class="p-2 grab" href="#">Style</a>
-              <a class="p-2 grab" href="#">Travel</a>
-            </nav>
-          </div>
-          
+          <div class="sticky-top pl-3 pr-3 rounded-lg" style="background-color: #e9ebee;">
+            <div class="nav-scroller py-1 mb-2">
+              <nav class="nav d-flex justify-content-between ">     
+                <a class="p-2 grab ein-active" data-toggle="pill" href="#home">
+                  <i class="far fa-fire-alt" style="font-size: 1.2rem;"></i>
+                  Wishlist
+                </a>
+                <a class="p-2 grab" data-toggle="pill" href="#menu2">
+                  <i class="fas fa-location" style="font-size: 1.2rem;"></i>
+                  Location</a>
+                <a class="p-2 grab" href="#">Business</a>
+                <a class="p-2 grab" href="#">Health</a>
+                <a class="p-2 grab" href="#">Style</a>
+                <a class="p-2 grab" href="#">Travel</a>
+              </nav>
+            </div>
+          </div>  
         <div class="">
           <%# content_for :title, "What's do you wanna eat" %>
             <%# navigation_add 'Posts', posts_path %>
@@ -89,42 +91,6 @@
               
             </div> <!-- end white -->
             <div class="bg-white p-3 rounded-lg">
-              <div class="bg-white btn-group d-flex pb-3 w-100 nav sticky-top" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#home"><%= image_tag("icons/award", size: "20x20") + " Wish list"  %>
-
-                </button>
-                <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#menu2"><%= image_tag("icons/fire", size: "20x20") + " "  %>Top choice
-                </button>
-                
-                <button type="button" class="btn btn-outline-success"><%= image_tag("icons/fire", size: "20x20") + " Hot"  %>
-                </button>
-                <button type="button" class="btn btn-outline-success" data-toggle="pill" href="#menu1">
-                   <i class="fas fa-fire"></i> All posts
-                </button>
-              </div> 
-
-              <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                  <input type="radio" name="options" id="option1" autocomplete="off" checked>
-                    <i class="fas fa-fire-alt" style="font-size: 1.5rem;"></i>
-                   qưerqwerq
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option2" autocomplete="off">
-                  <i class="fas fa-trophy-alt" style="font-size: 1.5rem;"></i> Radio 
-                </label>
-                <label class="btn grab">
-                  <input type="radio" name="options" id="option3" autocomplete="off">
-                  <i class="far fa-fire-alt" style="font-size: 1.5rem;"></i>
-                   Radio 
-                </label>
-                <label class="btn grab">
-                  <input type="radio" name="options" id="option3" autocomplete="off">
-                  <i class="fas fa-lightbulb" style="font-size: 1.5rem;"></i> Radio 
-                </label>
-                
-              </div>
-
             <!-- Tab panes -->
             <div class="tab-content">
               <div class="tab-pane container active" id="home">
@@ -173,3 +139,12 @@
         </div> <!-- end of col-3 -->
     </div> <!-- end of row -->
   </div> <!-- end of container-fluid -->
+
+<script>
+
+  $("#v-pills-tab .grab").click(function(){
+    $("#v-pills-tab .grab").removeClass('ein-active');
+    $(this).toggleClass('ein-active'); 
+});
+  
+</script>
