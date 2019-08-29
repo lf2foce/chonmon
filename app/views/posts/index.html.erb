@@ -34,9 +34,9 @@
         </div>
 
         <div class="col-lg-7">
-          <div class="sticky-top pl-3 pr-3 rounded-lg" style="background-color: #e9ebee;">
+          <div class="sticky-top pl-3 pr-3 rounded-lg" style="background-color: #e9ebee;" >
             <div class="nav-scroller py-1 mb-2">
-              <nav class="nav d-flex justify-content-between ">     
+              <nav class="nav d-flex justify-content-between" id="ein-filter">     
                 <a class="p-2 grab ein-active" data-toggle="pill" href="#home">
                   <i class="far fa-fire-alt" style="font-size: 1.2rem;"></i>
                   Wishlist
@@ -82,41 +82,36 @@
                     Result <span class="badge badge-light">0</span>
                   </button>
                   <% end %>
-
-                  
-                
               <% end %>
-            
-            
-              
             </div> <!-- end white -->
+
             <div class="bg-white p-3 rounded-lg">
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <div class="tab-pane container active" id="home">
-                <div class="row">
-                  <%= render @posts %>
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane container active" id="home">
+                  <div class="row">
+                    <%= render @posts %>
+                  </div>
+                  <div class="apple_pagination">
+                    <%#= will_paginate @posts %>
+                  </div>
                 </div>
-                <div class="apple_pagination">
-                  <%#= will_paginate @posts %>
-                </div>
-              </div>
-              
-              
-              <div class="tab-pane container" id="menu1">
-                <div class="row">
-                  <%= render @all_posts %> 
-                </div>
-              </div>
                 
                 
-              <div class="tab-pane container" id="menu2">
-                <div class="row"> 
-                  <%= render @top5posts %>
-                </div>  
+                <div class="tab-pane container" id="menu1">
+                  <div class="row">
+                    <%= render @all_posts %> 
+                  </div>
+                </div>
+                  
+                  
+                <div class="tab-pane container" id="menu2">
+                  <div class="row"> 
+                    <%= render @top5posts %>
+                  </div>  
+                </div>
               </div>
-            </div>
-          </div>   <!-- end white -->
+            </div>   <!-- end white -->
 
 
 
@@ -142,8 +137,8 @@
 
 <script>
 
-  $("#v-pills-tab .grab").click(function(){
-    $("#v-pills-tab .grab").removeClass('ein-active');
+  $("#ein-filter .grab").click(function(){
+    $("#ein-filter .grab").removeClass('ein-active');
     $(this).toggleClass('ein-active'); 
 });
   
