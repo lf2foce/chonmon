@@ -7,7 +7,16 @@
         <div class="col-lg-3 col-md-4">
 
           <div class="m-3">
-            <h1>Cocktails</h1>
+            <h5 class="text-muted">
+              <div class="d-flex  align-items-center">
+                <a class="text-muted  " href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+                </a>
+                Cocktails
+              </div>
+            
+            </h5>
+
             <div class="">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
@@ -35,9 +44,9 @@
 
         <div class="col-lg-6 col-md-8">
 
-          <div class="w-100 bg-white rounded-lg pt-3 pl-3 pr-3 mb-3">
+          <div class="mt-2 mb-2">
 
-              <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-3", method: :get do %>
+              <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
                 <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
                 <%= submit_tag "Search!", class: "btn btn-primary my-2 my-sm-0" %>
               <% end %>
@@ -46,7 +55,7 @@
                 
                   
                   <% if @count >0 %>
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                   <strong>Nice!</strong> We found <%= @count %> results.
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -85,7 +94,8 @@
                     <a class="p-2 grab" data-toggle="pill" href="#menu2">
                       <i class="fas fa-location" style="font-size: 1.2rem;"></i>
                       Nearby</a>
-                    <a class="p-2 grab" href="#">Top5</a>
+                    <a class="p-2 grab" href="#">
+                       Top 5</a>
                     <a class="p-2 grab" href="#">Hightest rated</a>
                     <a class="p-2 grab" href="#">Suggestion</a>
               
