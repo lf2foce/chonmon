@@ -1,5 +1,6 @@
 @import "custom.scss";
 @import "bootstrap/scss/bootstrap";
+@import "posts.scss";
 //@import "flickity/dist/flickity.css";
 
 @import "actiontext.scss";
@@ -13,6 +14,7 @@
 @import "FontAwesome/light.scss";
 @import "FontAwesome/regular.scss";
 @import "FontAwesome/solid.scss";
+
 
 .btn-ein {
   border: 0px solid black;
@@ -34,5 +36,6 @@
   background-color: #F7F7F7;
   color: #00AD39;
   font-weight: 400; 
-  border-radius: 500px;
+  //border-radius: 500px;
+  text-decoration: none;
 }
