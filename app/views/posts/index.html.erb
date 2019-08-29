@@ -36,18 +36,16 @@
         <div class="col-lg-7">
 
           <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">
-           
-              <a class="p-2 text-muted grab" href="#">Technology</a>
-              <a class="p-2  text-muted" href="#">Design</a>
-         
-              <a class="p-2 text-muted" href="#">Business</a>
-              
-             
-        
-              <a class="p-2 text-muted" href="#">Health</a>
-              <a class="p-2 text-muted" href="#">Style</a>
-              <a class="p-2 text-muted" href="#">Travel</a>
+            <nav class="nav d-flex justify-content-between">     
+              <a class="p-2 grab ein-active" href="#">
+                <i class="far fa-fire-alt" style="font-size: 1.5rem;"></i>
+                Wishlist
+              </a>
+              <a class="p-2 grab" href="#">Design</a>
+              <a class="p-2 grab" href="#">Business</a>
+              <a class="p-2 grab" href="#">Health</a>
+              <a class="p-2 grab" href="#">Style</a>
+              <a class="p-2 grab" href="#">Travel</a>
             </nav>
           </div>
           
@@ -59,7 +57,7 @@
 
             
 
-            <div class="w-100 bg-white rounded-lg pt-3 pl-3 mb-3">
+            <div class="w-100 bg-white rounded-lg pt-3 pl-3 pr-3 mb-3">
 
               <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-3", method: :get do %>
                 <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
@@ -67,18 +65,24 @@
               <% end %>
 
               <% if @count %>  
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                
                   
                   <% if @count >0 %>
-                  <strong>Nice!</strong> We found <%= @count %> location.
-                  <% else %>
-                  ---
-                  <% end %>
-
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong>Nice!</strong> We found <%= @count %> results.
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                </div>
+                  </div>
+                  <% else %>
+
+                  <button type="button" class="btn btn-warning mb-3">
+                    Result <span class="badge badge-light">0</span>
+                  </button>
+                  <% end %>
+
+                  
+                
               <% end %>
             
             

@@ -28,11 +28,12 @@
 /* Green */
 .grab {
   border-color: #F7F7F7;
-  color: #919191;
+  //color: #919191;
+  color: #6c757d;
   border-radius: 500px;
 }
 
-.grab:hover {
+.ein-active, .grab:hover {
   background-color: #F7F7F7;
   color: #00AD39;
   font-weight: 400; 
