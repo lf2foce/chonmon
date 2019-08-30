@@ -14,8 +14,12 @@
                 </a>
                 Cocktails
               </div>
-            
             </h5>
+
+            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
+              <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
+              <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+            <% end %>
 
             <div class="">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -44,12 +48,10 @@
 
         <div class="col-lg-6 col-md-8">
 
-          <div class="mt-2 mb-2">
+          <div class="m-2">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
 
-              <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
-                <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
-                <%= submit_tag "Search!", class: "btn btn-primary my-2 my-sm-0" %>
-              <% end %>
+              
 
               <% if @count %>  
                 
@@ -63,7 +65,7 @@
                   </div>
                   <% else %>
 
-                  <button type="button" class="btn btn-warning mb-3">
+                  <button type="button" class="btn btn-warning mt-2 mb-2">
                     Result <span class="badge badge-light">0</span>
                   </button>
                   <% end %>
@@ -159,4 +161,15 @@
     $(this).toggleClass('ein-active'); 
 });
   
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#home .media").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       @count = @posts.count
     else
       #@posts = Post.all
-      @posts = Post.paginate(:page => params[:page], :per_page => 3)
+      @posts = Post.paginate(:page => params[:page], :per_page => 20)
       redirect_to root_path if @posts.empty?
     end
 
