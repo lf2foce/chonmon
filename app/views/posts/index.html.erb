@@ -12,9 +12,13 @@
                 <a class="text-muted  " href="#">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
                 </a>
-                Cocktails
+                Categories
               </div>
             </h5>
+
+
+              
+
 
             <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
               <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
@@ -48,8 +52,10 @@
 
         <div class="col-lg-6 col-md-8">
 
+          
+
           <div class="m-2">
-            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            
 
               
 
@@ -79,9 +85,24 @@
             <%#= render_navigation %>
           <div class=""> <!-- dang la row -->
 
-            
+            <div class="search-box"> 
+                
+              <input placeholder="Search chonmon" type="text" class="form-control">  
+              
+            </div>
 
-            
+                
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" style="border: none; background-color: white;  border-radius: 2rem 0 0 2rem; padding-left: 20px;">
+                      <i class="far fa-search" style="font-size: 1.2rem;"></i>
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search chonmon" style="border: none; box-shadow:none !important; border-radius: 0 2rem 2rem 0;">
+                </div>
+              
+
+        
 
             <div class="bg-white p-3 rounded-lg">
 

@@ -1,9 +1,11 @@
 <div class="media border-bottom mb-3 pb-3">
   <img class="mr-3 img-fluid rounded align-self-center" src="<%= post.image_url %>" alt="Generic placeholder image" style="width: 120px; height: 120px;  object-fit: cover;">
   <div class="media-body">
-    <h5 class="mt-0"><%= post.title %>
-      <%#= link_to 'Edit', edit_post_path(post), class: "btn btn-sm btn-secondary fal fa-edit float-right" %>
-      <i class="fal fa-edit float-right" ></i>
+    <h5 class="mt-0">
+      <%= link_to post.title, post, class: "text-muted" %>
+      <%= link_to edit_post_path(post) do %>
+      <i class="fal fa-edit float-right text-muted" ></i>
+      <% end %>
 
     </h5>
     <%= post.content %></br>

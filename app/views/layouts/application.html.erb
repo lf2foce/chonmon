@@ -15,6 +15,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <%= image_tag("icons/papaya", size: "30x30") + " food insider"  %>
+
       </a>
 
       <div class="d-flex  align-items-center">
@@ -51,6 +52,13 @@
             </a>
 
           </li>
+          <li class="nav-item ">
+
+            <input class="form-control" id="myInput" type="text" placeholder="Search">
+
+            
+
+          </li>
           
             
          
@@ -69,7 +77,8 @@
     </div>
   -->
     
-    
+
   <%= yield %>
+  
   </body>
 </html>
