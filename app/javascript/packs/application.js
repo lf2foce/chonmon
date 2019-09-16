@@ -25,3 +25,13 @@ import "./FontAwesome/fontawesome";
 import "./FontAwesome/light";
 import "./FontAwesome/regular";
 import "./FontAwesome/solid";
+
+//document.addEventListener("turbolinks:load",() => {
+//	$('[data-toggle="tooltip"]').tooltip()
+//	$('[data-toggle="popover"]').popover()
+//})
+
+$(document).on('turbolinks:load', function() {
+	$('[data-toggle="tooltip"]').tooltip()
+	$('[data-toggle="popover"]').popover()
+})

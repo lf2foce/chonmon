@@ -2,7 +2,7 @@
   <img class="mr-3 img-fluid rounded align-self-center" src="<%= post.image_url %>" alt="Generic placeholder image" style="width: 120px; height: 120px;  object-fit: cover;">
   <div class="media-body">
     <h5 class="mt-0">
-      <%= link_to post.title, post, class: "text-muted" %>
+      <%= link_to post.title, post, class: "text-muted",  data: {toggle: "modal", target: ".bd-example-modal-lg-#{post.id}"} %>
       <%= link_to edit_post_path(post) do %>
       <i class="fal fa-edit float-right text-muted" ></i>
       <% end %>
@@ -22,4 +22,34 @@
 
         <%#= link_to 'Show', post, class: "btn btn-secondary" %></td>
         
+</div>
+
+
+<div class="modal fade bd-example-modal-lg-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-transparent" style="border: none;">
+      <div class="row no-gutters justify-content-md-center">
+    
+        <div class="col-md-auto">
+          <img class="img-fluid" src="<%= post.image_url %>" alt="<%= post.title %>">
+
+           <!--<img src="https://images.unsplash.com/photo-1562051725-cc35a65c8227?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" class="img-fluid dich-img" style="max-width: 500px;"> -->
+          <!--<img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid dich-img" style="max-width: 500px; max-height:500px;">-->
+        </div>
+        <div class="col col-lg-4 bg-white follow-img" style="overflow-y: auto;  ">
+          <%= post.content %>
+          <span class="badge badge-secondary"># tag1</span>
+          <span class="badge badge-secondary"># tag2</span>
+          <span class="badge badge-secondary"># tag1</span>
+
+          <span class="badge  badge-warning">Spacious</span>
+          <span class="badge  badge-success">Pizza</span>
+          <span class="badge  badge-success">Ribs</span></br>
+          <span class="stars-container stars-80">★★★★★</span>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
