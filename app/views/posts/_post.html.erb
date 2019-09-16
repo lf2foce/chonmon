@@ -26,40 +26,45 @@
 
 
 <div class="modal fade bd-example-modal-lg-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg bg-secondary">
     <div class="modal-content bg-transparent" style="border: none;">
+      
       <div class="row no-gutters justify-content-md-center">
     
-        <div class="col-md-auto">
-          <img class="img-fluid" src="<%= post.image_url %>" alt="<%= post.title %>" style="max-width: 500px;">
+        <div class="col-lg-auto">
+          <img class="" src="<%= post.image_url %>" alt="<%= post.title %>" style=" max-width: 100%;
+      height: auto;">
 
            <!--<img src="https://images.unsplash.com/photo-1562051725-cc35a65c8227?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" class="img-fluid dich-img" style="max-width: 500px;"> -->
           <!--<img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid dich-img" style="max-width: 500px; max-height:500px;">-->
         </div>
-        <div class="col-lg-4 bg-white p-3" style="overflow-y: auto;  ">
-          <h5 class="mt-0 text-muted">
-            <%= post.title %>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
-              <i class="fal fa-times-circle float-right" style="color: green;" ></i>
-            </button>
-            
-           
-          </h5>
-
-          <%= post.content %>
-          <span class="badge badge-secondary"># tag1</span>
-          <span class="badge badge-secondary"># tag2</span>
-          <span class="badge badge-secondary"># tag1</span>
-
-          <span class="badge  badge-warning">Spacious</span>
-          <span class="badge  badge-success">Pizza</span>
-          <span class="badge  badge-success">Ribs</span></br>
-          <span class="stars-container stars-80">★★★★★</span>
+        <div class="col-lg-4 bg-white" style="overflow-y: auto;  ">
           
+          <div class="p-2">
+            <h5 class="mt-0 text-muted">
+              <%= post.title %>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="fal fa-times-circle float-right" style="color: green; font-size:1.5rem;" ></i>
+              </button>
+              
+              
+             
+            </h5>
+
+            <%= post.content %>
+            <span class="badge badge-secondary"># tag1</span>
+            <span class="badge badge-secondary"># tag2</span>
+            <span class="badge badge-secondary"># tag1</span>
+
+            <span class="badge  badge-warning">Spacious</span>
+            <span class="badge  badge-success">Pizza</span>
+            <span class="badge  badge-success">Ribs</span>
+            <span class="stars-container stars-80">★★★★★</span>
+          </div>
           
         </div>
-      </div>
+      </div> <!-- end of row -->
+    <!-- end of container -->
     </div>
   </div>
 </div>
