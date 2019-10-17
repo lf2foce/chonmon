@@ -1,3 +1,5 @@
+
+
   <% if notice %>
     <aside id="notice"><%= notice %></aside>
   <% end %>
@@ -225,12 +227,11 @@
   $("#ein-filter .grab").click(function(){
     $("#ein-filter .grab").removeClass('ein-active');
     $(this).toggleClass('ein-active'); 
-});
-  
+  }); 
 </script>
 
 <script>
-$(document).ready(function(){
+document.addEventListener("turbolinks:load",() => {
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#home .media").filter(function() {
