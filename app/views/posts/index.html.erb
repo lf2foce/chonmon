@@ -4,11 +4,11 @@
     <aside id="notice"><%= notice %></aside>
   <% end %>
 
-<div class=""> 
-      <div class="row  no-gutters">
+<div class="container"> 
+      <div class="row">
         <div class="col-lg-3 col-md-4">
 
-          <div class="card m-3" style="border-radius: 14px; border-color: rgb(230, 236, 240);">
+          <div class="card mt-3" style="border-radius: 14px; border-color: rgb(230, 236, 240);">
             <div class="card-header bg-transparent" style="color: #17bf63">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mr-1" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
               <strong>Search filter</strong>
@@ -46,26 +46,22 @@
                 <label for="customRange1" class="mt-2">Price range</label>
                 <input type="range" class="custom-range" id="customRange1">
 
-                
+   
               </form>
              
             </div>
             <div class="card-footer bg-transparent">Advance search</div>
           </div>
 
-          <div class="m-3">
+          <div class="mt-3">
             <h5 class="text-muted">
-              <div class="d-flex  align-items-center">
+              <div class="">
                 <a class="text-muted  " href="#">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
                 </a>
                 Categories
               </div>
             </h5>
-
-
-              
-
 
             <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
               <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
@@ -97,18 +93,33 @@
           </div>
         </div>
 
-        <div class="col-lg-6 col-md-8">
+        <div class="col-lg-9 col-md-8">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="row">
 
-          
-
-          <div class="m-2">
-            
-
-              
-
-              <% if @count %>  
-                
-                  
+                <div class="card mt-3 rounded-lg" style="width: 100%;">
+                  <div class="card-header">
+                    New post
+                  </div>
+                  <div class="card-body" style="padding: 0;">
+                   <div class="form-edit-user">
+                    <div class="form-group row align-items-center">
+                      <div class="col-sm-2 col-form-label">
+                        <img class="avatar ml-3" src="https://scontent-hkg3-2.cdninstagram.com/vp/34469fed49c21ad9ecdf2a2439359905/5E476D67/t51.2885-19/s150x150/12331788_1668091390073421_743128638_a.jpg?_nc_ht=scontent-hkg3-2.cdninstagram.com">
+                      </div>
+                      <div class="col-sm-10">
+                        <p class="text-muted" style="font-size: 2em;" data-toggle="modal" data-target="#new_post_modal">What's happening? </p>
+                        
+                      </div>
+                     </div>
+                    </div> 
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="m-3">
+                <% if @count %>  
                   <% if @count >0 %>
                   <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                   <strong>Nice!</strong> We found <%= @count %> results.
@@ -122,15 +133,15 @@
                     Result <span class="badge badge-light">0</span>
                   </button>
                   <% end %>
-              <% end %>
-            </div> <!-- end white -->
+                <% end %>
+              </div> <!-- end white -->
 
           
-        <div class="">
+        <div class="row bg-white rounded-lg">
           <%# content_for :title, "What's do you wanna eat" %>
             <%# navigation_add 'Posts', posts_path %>
             <%#= render_navigation %>
-          <div class=""> <!-- dang la row -->
+          <div class="p-3"> <!-- dang la row -->
 
             <div class="search-box"> 
                 
@@ -151,7 +162,7 @@
 
         
 
-            <div class="bg-white p-3 rounded-lg">
+            <div class="rounded-lg bg-grey">
 
 
               <div class="sticky-top" style="background-color: #fff" >
@@ -198,30 +209,79 @@
                 </div>
               </div>
             </div>   <!-- end white -->
-
-
-
-          
-          </div> <!-- end row -->
-          
-
-          
-          
-            
-            
+          </div> <!-- end row --> 
         </div>    <!-- end of row -->
         </div>    <!-- end of col-6 -->
-        <div class="col-lg-3 ">
-          <div class="m-3">
-              <p>Bạn yêu thích cộng đồng chonmon và muốn nó trở nên lớn mạnh hơn?</p>
-              <a class="btn btn-sm btn-outline-secondary  badge-pill" href="#" role="button">Donate us</a>
-              <hr class="my-4">
-              <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="img-fluid">
+
+            
+            <div class="col-lg-4 bg-grey">
+              <div class="bg-white">
+
+                <div class="form-edit-user">
+                    <div class="form-group row ">
+                      <div class="col-sm-3 col-form-label">
+                        <img class="avatar" src="https://scontent-hkg3-2.cdninstagram.com/vp/34469fed49c21ad9ecdf2a2439359905/5E476D67/t51.2885-19/s150x150/12331788_1668091390073421_743128638_a.jpg?_nc_ht=scontent-hkg3-2.cdninstagram.com">
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="username">EinB</p>
+                        <a class="change-photo" href="">Change Profile Photo</a>
+                    </div> 
+                  </div>
+                <p>Bạn yêu thích cộng đồng chonmon và muốn nó trở nên lớn mạnh hơn?</p>
+                <a class="btn btn-sm btn-outline-secondary  badge-pill" href="#" role="button">Donate us</a>
+                <hr class="my-4">
+                <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="img-fluid">
+            </div>
+
+            </div>
           </div>
-        </div> <!-- end of col-3 -->
+          
+        
     </div> <!-- end of row -->
   </div> <!-- end of container-fluid -->
 
+
+<div class="modal fade" id="new_post_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New food</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: @post, local: true) do |form| %>
+
+          <div class="form-group">
+            <%= form.label :title %>
+            <%= form.text_field :title, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :content %>
+            <%= form.text_area :content, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :image_url %>
+            <%= form.text_field :image_url, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :category_id %>
+            <%= form.text_field :category_id, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+              <%= form.submit "Create", class: "btn btn-warning" %>
+          </div>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+</div>
 <script>
 
   $("#ein-filter .grab").click(function(){

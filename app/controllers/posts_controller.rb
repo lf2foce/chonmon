@@ -16,6 +16,12 @@ class PostsController < ApplicationController
 
     @top5posts = Post.order('title DESC').limit(5)
     @all_posts = Post.all
+
+    @post = Post.new
+    if @post.save 
+      format.html { redirect_to @post, notice: 'Post was successfully created.' }
+      format.json { render :show, status: :created, location: @post }
+    end
   end
 
   # GET /posts/1

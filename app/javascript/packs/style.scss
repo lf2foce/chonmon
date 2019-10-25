@@ -39,3 +39,36 @@
   border-radius: 500px;
   text-decoration: none;
 }
+
+
+.form-edit-user{
+  .form-group, input{
+    font-size: 14px;
+    color: black;
+  }
+  input, textarea{
+    border: 1px solid #efefef;
+  }
+  .col-form-label{
+    //text-align: right;
+    font-weight: 600;
+  }
+  .avatar{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+  }
+  .username{
+    font-size: 20px;
+    line-height: 22px;
+    margin-bottom: 0;
+  }
+  .change-photo{
+    color: #3897f0;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  input[type='submit']{
+    color: white;
+  }
+}
