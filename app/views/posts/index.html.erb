@@ -94,26 +94,27 @@
         </div>
 
         <div class="col-lg-9 col-md-8">
-          <div class="row">
-            <div class="col-lg-8">
+          <div class="row ">            
+            <div class="col-lg-8 mt-3 rounded-lg" >
+              
+              
+           
               <div class="">
 
-                <div class="card mt-3 rounded-lg" style="width: 100%;">
+                <div class="card rounded-lg" style="width: 100%;">
                   <div class="card-header">
                     New post
                   </div>
                   <div class="card-body" style="padding: 0;">
-                   <div class="form-edit-user">
-                    <div class="form-group row align-items-center">
-                      <div class="col-sm-2 col-form-label">
-                        <img class="avatar ml-3" src="https://scontent-hkg3-2.cdninstagram.com/vp/34469fed49c21ad9ecdf2a2439359905/5E476D67/t51.2885-19/s150x150/12331788_1668091390073421_743128638_a.jpg?_nc_ht=scontent-hkg3-2.cdninstagram.com">
-                      </div>
-                      <div class="col-sm-10">
-                        <p class="text-muted" style="font-size: 2em;" data-toggle="modal" data-target="#new_post_modal">What's happening? </p>
+
+                    <div class="media form-edit-user align-items-center">
+                      <img class="m-3 avatar" src="https://scontent-hkg3-2.cdninstagram.com/vp/34469fed49c21ad9ecdf2a2439359905/5E476D67/t51.2885-19/s150x150/12331788_1668091390073421_743128638_a.jpg?_nc_ht=scontent-hkg3-2.cdninstagram.com" alt="Generic placeholder image">
+                      <div class="media-body ">
+                        
+                        <p class="text-muted" style="font-size: 1.5em;" data-toggle="modal" data-target="#new_post_modal">What's happening? </p>
                         
                       </div>
-                     </div>
-                    </div> 
+                    </div>
                     
                   </div>
                 </div>
@@ -136,18 +137,14 @@
                 <% end %>
               </div> <!-- end white -->
 
-          
+    
         <div class="bg-white rounded-lg">
           <%# content_for :title, "What's do you wanna eat" %>
             <%# navigation_add 'Posts', posts_path %>
             <%#= render_navigation %>
           <div class=""> <!-- dang la p-3 -->
 
-            <div class="search-box"> 
-                
-              <input placeholder="Search chonmon" type="text" class="form-control">  
-              
-            </div>
+
 
                 
                 <div class="input-group mb-2">
@@ -214,19 +211,16 @@
         </div>   <!-- end col -lg-8 -->
 
             
-            <div class="col-lg-4 bg-grey">
-              <div class="bg-white">
+            <div class="col-lg-4" style="background-color: #e9ebee">
+              <div class="">
+                <div class="search-box"> 
+    
+                  <input placeholder="Search chonmon" type="text" class="form-control">  
+                  
+                </div>
 
                 <div class="form-edit-user">
-                    <div class="form-group row ">
-                      <div class="col-sm-3 col-form-label">
-                        <img class="avatar" src="https://scontent-hkg3-2.cdninstagram.com/vp/34469fed49c21ad9ecdf2a2439359905/5E476D67/t51.2885-19/s150x150/12331788_1668091390073421_743128638_a.jpg?_nc_ht=scontent-hkg3-2.cdninstagram.com">
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="username">EinB</p>
-                        <a class="change-photo" href="">Change Profile Photo</a>
-                    </div> 
-                  </div>
+                    
                 <p>Bạn yêu thích cộng đồng chonmon và muốn nó trở nên lớn mạnh hơn?</p>
                 <a class="btn btn-sm btn-outline-secondary  badge-pill" href="#" role="button">Donate us</a>
                 <hr class="my-4">

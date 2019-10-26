@@ -16,7 +16,11 @@
 
     <span class="badge  badge-warning">Spacious</span>
     <span class="badge  badge-success">Pizza</span>
+    <%  if post.hash_tags.exists? %>
+    <span class="badge  badge-success"><%= post.hash_tags.first.name %></span>
+    <% end %>
     <span class="badge  badge-success">Ribs</span></br>
+
     <span class="stars-container stars-80">★★★★★</span>
   </div>
 
