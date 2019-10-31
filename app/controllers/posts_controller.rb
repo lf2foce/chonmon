@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+     @comment = Comment.new
     #@posts = Post.all
     if params[:filter]
       @posts = Post.search_by_title(params[:filter])
@@ -22,6 +23,8 @@ class PostsController < ApplicationController
       format.html { redirect_to @post, notice: 'Post was successfully created.' }
       format.json { render :show, status: :created, location: @post }
     end
+
+
   end
 
   # GET /posts/1

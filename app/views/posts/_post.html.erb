@@ -20,12 +20,18 @@
       <% post.hash_tags.each do |hash_tag| %>
         <span class="badge  badge-success hash-tag-<%= hash_tag.id %>" onclick="clickfunc(this)"><%= hash_tag.name %></span>
         <script>
-          if($(".hash-tag-<%= hash_tag.id %>:contains('haha')").length > 0){
-              $(".hash-tag-<%= hash_tag.id %>").css( "background", "#c8ebcc" );
+          if($(".hash-tag-<%= hash_tag.id %>:contains('ngon')").length > 0){
+              $(".hash-tag-<%= hash_tag.id %>").css( "background", "#ffc107" );
           }
-          if($(".hash-tag-<%= hash_tag.id %>:contains('khongngon')").length > 0){
+          if($(".hash-tag-<%= hash_tag.id %>:contains('khonganlai')").length > 0){
               $(".hash-tag-<%= hash_tag.id %>").css( "background", "#6c757d" );
           } 
+          if($(".hash-tag-<%= hash_tag.id %>:contains('spacious')").length > 0){
+              $(".hash-tag-<%= hash_tag.id %>").css( "background", "#ffc107" )
+                                                .css("color", "#212529")
+              ;
+          } 
+
 
           function clickfunc(obj) {
               var t = $(obj).text();

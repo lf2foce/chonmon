@@ -1,3 +1,10 @@
+<%= form_with(model: @comment) do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit "create", class: "comment-submit" %>
+<% end %>
+
+<div id="msg">
+</div>
 <h1>Welcome#index</h1>
 <p>test scaffold</p>
 

@@ -1,4 +1,10 @@
+<%= form_with(model: @comment) do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit "create", class: "comment-submit" %>
+<% end %>
 
+<div id="msg">
+</div>
 
   <% if notice %>
     <aside id="notice"><%= notice %></aside>
@@ -297,6 +303,17 @@ document.addEventListener("turbolinks:load",() => {
 //$( "span" )
 //  .filter( ".badge-success" )
 //    .css( "background", "#c8ebcc" );
+
+//test es6
+const fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
+
+const filterItems = (needle, heystack) => {
+  let query = needle.toLowerCase();
+  return heystack.filter(item => item.toLowerCase().indexOf(query) >= 0);
+}
+
+console.log(filterItems('ap', fruits)); // ['apple', 'grapes']
+console.log(filterItems('ang', fruits)); // ['mango', 'orange']
 
  
 </script>
