@@ -17,7 +17,27 @@
     <span class="badge  badge-warning">Spacious</span>
     <span class="badge  badge-success">Pizza</span>
     <%  if post.hash_tags.exists? %>
-    <span class="badge  badge-success"><%= post.hash_tags.first.name %></span>
+      <% post.hash_tags.each do |hash_tag| %>
+        <span class="badge  badge-success hash-tag-<%= hash_tag.id %>" onclick="clickfunc(this)"><%= hash_tag.name %></span>
+        <script>
+          if($(".hash-tag-<%= hash_tag.id %>:contains('haha')").length > 0){
+              $(".hash-tag-<%= hash_tag.id %>").css( "background", "#c8ebcc" );
+          }
+          if($(".hash-tag-<%= hash_tag.id %>:contains('khongngon')").length > 0){
+              $(".hash-tag-<%= hash_tag.id %>").css( "background", "#6c757d" );
+          } 
+
+          function clickfunc(obj) {
+              var t = $(obj).text();
+              //alert(t);
+              $("#home .media").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(t) > -1)
+              });
+          }
+
+           
+        </script>
+      <% end %>
     <% end %>
     <span class="badge  badge-success">Ribs</span></br>
 
