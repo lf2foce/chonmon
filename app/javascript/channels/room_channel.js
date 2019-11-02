@@ -30,6 +30,7 @@ submit_messages = function () {
       $('.comment-submit').click()
       
       event.target.value = ''
+
       event.preventDefault()
     }
   })
