@@ -1,3 +1,4 @@
+
 <div class="container">
   <p id="notice"><%= notice %></p>
   <div class="bg-white p-3 rounded-lg">
@@ -32,6 +33,16 @@
 
   </div>
 
+  <h5>comments</h5>
+  <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit "create", class: "comment-submit" %>
+  <% end %>
+              
+  <div id="msg-<%= @post.id %>">
+  </div>
+
 </div>
+
 
 

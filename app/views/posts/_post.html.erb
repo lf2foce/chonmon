@@ -1,5 +1,5 @@
 <div class="media border-bottom mb-3 pb-3">
-  <img class="mr-3 img-fluid rounded align-self-center" src="<%= post.image_url %>" alt="Generic placeholder image" style="width: 120px; height: 120px;  object-fit: cover;">
+  <img class="mr-3 img-fluid rounded align-self-center" src="<%= post.image_url %>" alt=" placeholder image" style="width: 120px; height: 120px;  object-fit: cover;">
   <div class="media-body">
     <h5 class="mt-0">
       <%= link_to post.title, post, class: "text-muted",  data: {toggle: "modal", target: ".bd-example-modal-lg-#{post.id}"} %>
@@ -56,7 +56,7 @@
 
 
 <div class="modal fade bd-example-modal-lg-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg bg-secondary">
+  <div class="modal-dialog modal-lg ">
     <div class="modal-content bg-transparent" style="border: none;">
       
       <div class="row no-gutters justify-content-md-center">
@@ -82,14 +82,16 @@
             </h5>
 
             <%= post.content %>
-            <span class="badge badge-secondary"># tag1</span>
-            <span class="badge badge-secondary"># tag2</span>
-            <span class="badge badge-secondary"># tag1</span>
+            <%  if post.hash_tags.exists? %>
+              <% post.hash_tags.each do |hash_tag| %>
+                <span class="badge  badge-success hash-tag-<%= hash_tag.id %>"><%= hash_tag.name %></span>
+              <% end %>
+            <% end %>
+            <span class="stars-container stars-90">★★★★★</span>
 
-            <span class="badge  badge-warning">Spacious</span>
-            <span class="badge  badge-success">Pizza</span>
-            <span class="badge  badge-success">Ribs</span>
-            <span class="stars-container stars-80">★★★★★</span>
+            
+
+
           </div>
           
         </div>

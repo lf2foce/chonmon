@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_rich_text :body
   has_many :post_hash_tags
   has_many :hash_tags, through: :post_hash_tags
+  has_many :comments
 
   after_commit :create_hash_tags, on: [:create]
   after_commit :update_hash_tags, on: [:update]
