@@ -91,7 +91,7 @@
 
             <h5>comments</h5>
             <%= form_with(model: [post, post.comments.build]) do |f| %>
-              <%= f.text_field :content %>
+              <%= f.text_field :content,  id: "comment-content", data: {postID: "#{post.id}"} %>
               <%= f.submit "create", class: "comment-submit" %>
             <% end %>
                         

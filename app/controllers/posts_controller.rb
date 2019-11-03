@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [ :show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
     @top5posts = Post.order('title DESC').limit(5)
     @all_posts = Post.all
-
+    
     @post = Post.new
     if @post.save 
       format.html { redirect_to @post, notice: 'Post was successfully created.' }
