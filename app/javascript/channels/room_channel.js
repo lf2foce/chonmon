@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function () {
   submit_messages()
 })
 submit_messages = function () {
-  $('#comment_content').on('keypress', function (event) {
+  $('#comment_content').on('keydown', function (event) {
     if (event.keyCode == 13) {
     	console.log("hitted")
       $('.comment-submit').click()

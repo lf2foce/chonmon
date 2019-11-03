@@ -1,4 +1,4 @@
-//@import "custom.scss";
+@import "_custom.scss";
 @import "bootstrap/scss/bootstrap.scss";
 @import "posts.scss";
 //@import "flickity/dist/flickity.css";
@@ -12,6 +12,7 @@
 @import "FontAwesome/light.scss";
 @import "FontAwesome/regular.scss";
 @import "FontAwesome/solid.scss";
+
 
 
 .btn-ein {
