@@ -74,12 +74,13 @@ module.exports = function(api) {
           async: false
         }
       ],
-      isProductionEnv && [
-        require('babel-plugin-transform-react-remove-prop-types').default,
-        {
-          removeImport: true
-        }
-      ]
+      //tam bo cac dong duoi di
+      //isProductionEnv && [
+      //  require('babel-plugin-transform-react-remove-prop-types').default,
+      //  {
+      //    removeImport: true
+      //  }
+      //]
     ].filter(Boolean)
   }
 }

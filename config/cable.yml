@@ -7,4 +7,3 @@ test:
 production:
   adapter: redis
   url: redis://redistogo:b868baf6bb1ce70bf394d5b1c413cde3@crestfish.redistogo.com:11299/
-  channel_prefix: apptest66_production
