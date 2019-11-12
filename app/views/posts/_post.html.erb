@@ -56,13 +56,13 @@
 
 
 <div class="modal fade bd-example-modal-lg-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg ">
+  <div class="modal-dialog modal-xl ">
     <div class="modal-content bg-transparent" style="border: none;">
       
       <div class="row no-gutters justify-content-center">
     
         <div class="col-lg-auto  align-self-center" >
-          <img class="img-fluid" src="<%= post.image_url %>" alt="<%= post.title %>" style="max-height: 600px;">
+          <img class="" src="<%= post.image_url %>" alt="<%= post.title %>" style="max-height: 600px; max-width: 600px; object-fit: cover; width: 100%;">
 
            <!--<img src="https://images.unsplash.com/photo-1562051725-cc35a65c8227?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" class="img-fluid dich-img" style="max-width: 500px;"> -->
           <!--<img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid dich-img" style="max-width: 500px; max-height:500px;">-->
@@ -95,6 +95,9 @@
             <% end %>
                         
             <div id="msg-<%= post.id %>">
+            </div>
+            <div class="modal-footer">
+              blah
             </div>
 
             
