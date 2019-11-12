@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   #validates :user_name, presence: true, length: { minimum: 3, maximum: 16 }
-  has_many :posts
+  has_many :posts, dependent: :destroy
+
   #role
 	  #ROLES = {0 => :guest, 1 => :user, 2 => :moderator, 3 => :admin}
 #

@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :category
-  has_many :posts, dependent: :destroy
+  belongs_to :user
   has_rich_text :body
   has_many :post_hash_tags
   has_many :hash_tags, through: :post_hash_tags
