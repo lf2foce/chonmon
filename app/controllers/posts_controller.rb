@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @top5posts = Post.order('title DESC').limit(5)
     @all_posts = Post.all
     
-    @post = Post.new
+    @post = current_user.posts.build
     if @post.save 
       format.html { redirect_to @post, notice: 'Post was successfully created.' }
       format.json { render :show, status: :created, location: @post }
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
