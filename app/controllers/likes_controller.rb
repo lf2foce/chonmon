@@ -12,8 +12,11 @@ class LikesController < ApplicationController
 	    flash[:notice] = "You can't like more than once"
 	  else
 	    @post.likes.create(user_id: current_user.id)
+	    respond_to do |format|
+	    		format.js
+	    end
 	  end
-	  redirect_to posts_path
+	  
   end
 
   def destroy
@@ -22,7 +25,7 @@ class LikesController < ApplicationController
 	  else
 	    @like.destroy
 	  end
-	  redirect_to post_path(@post)
+	  redirect_to posts_path
 	end
 
   private

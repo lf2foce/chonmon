@@ -60,11 +60,13 @@
       <% end %>
     <% else %>
       <%#= button_to 'Like', post_likes_path(post), method: :post %>
-      <%= link_to post_likes_path(post), method: :post, class: "btn" do %>
+      <div class="like" id="like">
+      <%= link_to post_likes_path(post), method: :post, remote: true, class: "btn " do %>
           <span style="font-size: 1.5em; color: grey;">
             <i class="far fa-heart"></i>
           </span>  Like
       <% end %>
+      </div>
 
     <% end %>
 
