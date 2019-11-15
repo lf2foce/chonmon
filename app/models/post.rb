@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :post_hash_tags
   has_many :hash_tags, through: :post_hash_tags
   has_many :comments
+  has_many :likes, dependent: :destroy
 
   after_commit :create_hash_tags, on: [:create]
   after_commit :update_hash_tags, on: [:update]

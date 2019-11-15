@@ -48,6 +48,26 @@
     <span class="badge  badge-success">Ribs</span></br>
 
     <span class="stars-container stars-80">★★★★★</span>
+
+    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    
+    <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+    <% if pre_like %>
+      <%= link_to post_like_path(post, pre_like), method: :delete, class: "btn" do %>
+          <span style="font-size: 1.5em; color: grey;">
+            <i class="fas fa-heart"></i>
+          </span>  Like
+      <% end %>
+    <% else %>
+      <%#= button_to 'Like', post_likes_path(post), method: :post %>
+      <%= link_to post_likes_path(post), method: :post, class: "btn" do %>
+          <span style="font-size: 1.5em; color: grey;">
+            <i class="far fa-heart"></i>
+          </span>  Like
+      <% end %>
+
+    <% end %>
+
   </div>
 
         <%#= link_to 'Show', post, class: "btn btn-secondary" %></td>
@@ -87,6 +107,7 @@
               <% end %>
             <% end %>
             <span class="stars-container stars-90">★★★★★</span>
+            
 
             <h5>comments</h5>
             <%= form_with(model: [post, post.comments.build]) do |f| %>

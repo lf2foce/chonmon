@@ -42,6 +42,11 @@
   <div id="msg-<%= @post.id %>">
   </div>
 
+  <% @post.comments.each do |comment| %>
+    <%= comment.content %>
+  <% end %>
+
+
 </div>
 
 
