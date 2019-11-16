@@ -7,11 +7,13 @@
 //});
 
 
-document.getElementById("like").innerHTML = "<span style='font-size: 1.5em; color: grey;'>" + 
-            "<i class='fas fa-heart'></i>" + 
-          "</span> Like";
+//its' work
+//document.getElementById("like-<%= @post.id %>").innerHTML = "<span style='font-size: 1.5em; color: grey;'>" + 
+//            "<i class='fas fa-heart'></i>" + 
+//          "</span> Like";
 
-//$( "#like" ).on( "click", function() {
-//  
-//  alert( "Hello ");
-//});
+//its' work
+//$("<%= escape_javascript(render 'likes/partial') %>").appendTo("#like-<%= @post.id %>");
+//
+
+$("#like-<%= @post.id %>").html($("<%= escape_javascript(render 'likes/partial') %>"))

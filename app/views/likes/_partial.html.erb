@@ -1,0 +1,9 @@
+<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<%= link_to post_like_path(@post, pre_like), method: :delete, class: "grab" do %>
+
+<span style="font-size: 1.2em; color: #00AD39;">
+   <i class="fas fa-heart"></i>
+</span>  <span style="text-decoration: none; color: #00AD39;">Like</span>
+
+
+<% end %>
