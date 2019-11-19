@@ -1,6 +1,7 @@
-<% if user_signed_in? && current_user.likes?(@post) %>
 
-	<%= link_to post_like_path(@post, @like), method: :delete, remote: true, class: "grab" do %>
+<% if user_signed_in? && current_user.likes?(post) %>
+
+	<%= link_to post_like_path(post, @like), method: :delete, remote: true, class: "grab" do %>
 
 	<span style="font-size: 1.5em; color: #00AD39;">
 	   <i class="fas fa-heart"></i>
@@ -11,7 +12,7 @@
 
 <% else %>
 
-	<%= link_to post_likes_path(@post), :method => :post, remote: true, class: "grab" do %>
+	<%= link_to post_likes_path(post), :method => :post, remote: true, class: "grab" do %>
 
 	<span style="font-size: 1.5em; color: gray;">
 	   <i class="far fa-heart"></i>

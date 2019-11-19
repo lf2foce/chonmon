@@ -16,6 +16,6 @@
 //$("<%= escape_javascript(render 'likes/like') %>").appendTo("#like-<%= @post.id %>");
 //
 
-$("#like-<%= @post.id %>").html('<%= j render 'likes/button' %>');
+$("#like-<%= @post.id %>").html('<%= j render( partial: 'likes/button', locals: { post: @post}) %>');
 
 //$("#post_<%= @post.id %>_likes").html('<%= j render 'likes/likes' %>')

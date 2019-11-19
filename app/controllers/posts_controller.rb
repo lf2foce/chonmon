@@ -25,12 +25,7 @@ class PostsController < ApplicationController
       format.json { render :show, status: :created, location: @post }
     end
 
-    pre_like = @post.likes.find { |like| like.user_id == current_user.id}
-    if pre_like
-      @like = current_user.likes.find_by(post_id: @post.id)
-    else
-      @like = current_user.likes.new(post_id: @post.id)
-    end
+
 
 
   end
