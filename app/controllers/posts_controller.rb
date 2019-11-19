@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [ :show, :edit, :update, :destroy]
 
+
   # GET /posts
   # GET /posts.json
   def index
@@ -24,6 +25,13 @@ class PostsController < ApplicationController
       format.json { render :show, status: :created, location: @post }
     end
 
+    pre_like = @post.likes.find { |like| like.user_id == current_user.id}
+    if pre_like
+      @like = current_user.likes.find_by(post_id: @post.id)
+    else
+      @like = current_user.likes.new(post_id: @post.id)
+    end
+
 
   end
 
@@ -31,6 +39,14 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comment = Comment.new
+
+    pre_like = @post.likes.find { |like| like.user_id == current_user.id}
+    if pre_like
+      @like = current_user.likes.find_by(post_id: @post.id)
+    else
+      @like = current_user.likes.new(post_id: @post.id)
+    end
+
   end
 
   # GET /posts/new
@@ -87,6 +103,8 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params

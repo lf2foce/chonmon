@@ -28,4 +28,24 @@ class User < ApplicationRecord
 	  #  role == role_name
 	  #end
 	  #end role
+    def likes?(post)
+
+      post.likes.where(user_id: id).any?
+
+    end
+    #test
+    def heart!(post)
+      self.likes.create!(post_id: post.id)
+    end
+
+    # destroys a heart with matching post_id and user_id
+    def unheart!(post)
+      heart = self.likes.find_by_post_id(post.id)
+      heart.destroy!
+    end
+
+    # returns true of false if a post is hearted by user
+    def heart?(post)
+      self.likes.find_by_post_id(post.id)
+    end
 end

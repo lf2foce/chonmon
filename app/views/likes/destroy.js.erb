@@ -1,0 +1,8 @@
+//alert("<%= @post.id %>");
+
+
+//$("#dislike-<%= @post.id %>").html($("<%= escape_javascript(render 'likes/destroy') %>"))
+
+//alert("nice");
+
+$("#post_<%= @post.id %>_likes").replaceWith('<%= j render 'likes/likes' %>')

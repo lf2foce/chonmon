@@ -13,7 +13,9 @@
 //          "</span> Like";
 
 //its' work
-//$("<%= escape_javascript(render 'likes/partial') %>").appendTo("#like-<%= @post.id %>");
+//$("<%= escape_javascript(render 'likes/like') %>").appendTo("#like-<%= @post.id %>");
 //
 
-$("#like-<%= @post.id %>").html($("<%= escape_javascript(render 'likes/partial') %>"))
+//$("#like-<%= @post.id %>").replaceWith('<%= j render 'likes/like' %>');
+
+$("#post_<%= @post.id %>_likes").replaceWith('<%= j render 'likes/likes' %>')

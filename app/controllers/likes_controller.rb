@@ -1,10 +1,9 @@
 class LikesController < ApplicationController
   before_action :find_post
-  before_action :find_like, only: [:destroy]
+  before_action :find_like , only: [:destroy]
 
   def already_liked?
-	  Like.where(user_id: current_user.id, post_id:
-	  params[:post_id]).exists?
+	  Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?
 	end
 
   def create
@@ -20,12 +19,16 @@ class LikesController < ApplicationController
   end
 
   def destroy
-	  if !(already_liked?)
-	    flash[:notice] = "Cannot unlike"
-	  else
-	    @like.destroy
-	  end
-	  redirect_to posts_path
+	  #if !(already_liked?)
+	  #  flash[:notice] = "Cannot unlike"
+	  #else
+	  	@like.destroy
+	  	respond_to do |format|
+	    		format.js { render :template => 'likes/destroy.js.erb', :layout => false }
+	    end
+	    
+	  #end
+	  #redirect_to posts_path
 	end
 
   private
@@ -34,6 +37,7 @@ class LikesController < ApplicationController
   end
 
   def find_like
-	   @like = @post.likes.find(params[:id])
+	   #@like = @post.likes.find(params[:id])
+	   @like = current_user.likes.find_by(post_id: @post.id)
 	end
 end
