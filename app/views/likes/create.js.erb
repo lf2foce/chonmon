@@ -16,6 +16,6 @@
 //$("<%= escape_javascript(render 'likes/like') %>").appendTo("#like-<%= @post.id %>");
 //
 
-//$("#like-<%= @post.id %>").replaceWith('<%= j render 'likes/like' %>');
+$("#like-<%= @post.id %>").html('<%= j render 'likes/button' %>');
 
-$("#post_<%= @post.id %>_likes").replaceWith('<%= j render 'likes/likes' %>')
+//$("#post_<%= @post.id %>_likes").html('<%= j render 'likes/likes' %>')

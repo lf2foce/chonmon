@@ -51,32 +51,11 @@
 
 
 
-<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %>
-      <div class="unlike" id="dislike-<%= @post.id %>">
-        <%= link_to post_like_path(@post, pre_like), method: :delete, remote: true,  class: "grab" do %>
-            <span style="font-size: 1.5em; color: #00AD39;">
-              <i class="fas fa-heart"></i>
-            </span>  <span style="text-decoration: none; color: #00AD39;">Like</span>
-        <% end %>
-      </div>
-    <% else %>
-      <%#= button_to 'Like', post_likes_path(post), method: :post %>
-      <div class="like" id="like-<%= @post.id %>">
-        <%= link_to post_likes_path(@post), method: :post, remote: true, class: "grab" do %>
-            <span style="font-size: 1.5em; color: gray;">
-              <i class="far fa-heart"></i>
-              </span><span style="text-decoration: none; color: gray;"> Like </span>
-        <% end %>
-      </div>
-
-    <% end %>
 
 
 
+<div id="like-<%= @post.id %>">
 
-<div id="post_<%= @post.id %>_likes">
-
-  <%= render partial: "likes/likes" %>
+  <%= render partial: "likes/button" %>
 
 </div>

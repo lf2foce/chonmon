@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  respond_to :js
   before_action :find_post
   before_action :find_like , only: [:destroy]
 
@@ -11,9 +12,7 @@ class LikesController < ApplicationController
 	    flash[:notice] = "You can't like more than once"
 	  else
 	    @post.likes.create(user_id: current_user.id)
-	    respond_to do |format|
-	    		format.js
-	    end
+	    
 	  end
 	  
   end
@@ -23,9 +22,7 @@ class LikesController < ApplicationController
 	  #  flash[:notice] = "Cannot unlike"
 	  #else
 	  	@like.destroy
-	  	respond_to do |format|
-	    		format.js { render :template => 'likes/destroy.js.erb', :layout => false }
-	    end
+	  	
 	    
 	  #end
 	  #redirect_to posts_path
