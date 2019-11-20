@@ -49,11 +49,14 @@
 
     <span class="stars-container stars-80">★★★★★</span>
 
-
-
+    
+    
+  
+    <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
     <% @like = current_user.likes.find_by(post_id: post.id) %>
     <div id="like-<%= post.id %>">
       <%= render partial: "likes/button", locals: {post: post} %>
+
     </div>
 
   </div>
