@@ -16,3 +16,12 @@
 .modal-backdrop.show {
     opacity: 0.8;
 }
+
+.card {
+	.card-header {
+	  padding: 0.25rem 1.25rem;
+	}
+	.card-footer {
+    padding: 0.25rem 1.25rem;
+  }
+	}
