@@ -2,13 +2,21 @@
   <img class="mr-3 img-fluid rounded align-self-center" src="<%= post.image_url %>" alt=" placeholder image" style="width: 120px; height: 120px;  object-fit: cover;">
   <div class="media-body">
     <h5 class="mt-0">
-      <%= link_to post.title, post, class: "text-muted",  data: {toggle: "modal", target: ".bd-example-modal-lg-#{post.id}"} %>
+      <%= link_to post.title, post, class: "text-decoration-none",  data: {toggle: "modal", target: ".bd-example-modal-lg-#{post.id}"} %>
+
       <%= link_to edit_post_path(post) do %>
       <i class="fal fa-edit float-right text-muted" ></i>
       <% end %>
 
     </h5>
+    <span class="small text-muted" style="font-weight: 600;"> <%#= (Time.now.to_date - post.created_at.to_date).to_i %>  
+      <%= time_ago_in_words(post.created_at) %> ago
+    </span>
+    
     <%= post.content %></br>
+    <%= post.interest_list %>
+    <%= post.tag_list %>
+    
 
     <span class="badge badge-secondary"># tag1</span>
     <span class="badge badge-secondary"># tag2</span>
@@ -16,6 +24,7 @@
 
     <span class="badge  badge-warning">Spacious</span>
     <span class="badge  badge-success">Pizza</span>
+
     <%  if post.hash_tags.exists? %>
       <% post.hash_tags.each do |hash_tag| %>
         <span class="badge  badge-success hash-tag-<%= hash_tag.id %>" onclick="clickfunc(this)"><%= hash_tag.name %></span>
@@ -45,8 +54,9 @@
         </script>
       <% end %>
     <% end %>
-    <span class="badge  badge-success">Ribs</span></br>
-
+    <span class="badge  badge-success">Ribs</span>
+    
+    
     <span class="stars-container stars-80">★★★★★</span>
 
     
@@ -102,7 +112,7 @@
 
             <h5>comments</h5>
             <%= form_with(model: [post, post.comments.build]) do |f| %>
-              <%= f.text_field :content,  id: "comment-content", data: {postID: "#{post.id}"} %>
+              <%= f.text_field :content, data: {postID: "#{post.id}"} %>
               <%= f.submit "create", class: "comment-submit" %>
             <% end %>
                         

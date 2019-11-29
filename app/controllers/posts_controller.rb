@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   before_action :set_post, only: [ :show, :edit, :update, :destroy]
 
 
@@ -14,6 +15,19 @@ class PostsController < ApplicationController
       #@posts = Post.all
       @posts = Post.paginate(:page => params[:page], :per_page => 20)
       redirect_to root_path if @posts.empty?
+    end
+
+    #test search
+    if params[:search]
+      @posts = Post.search(params[:search]).order("created_at DESC")
+    else
+      @posts = Post.all.order('created_at DESC')
+    end
+    #test search
+    if params[:d]
+      @posts = Post.recently(params[:d]).order("created_at DESC")
+    else
+      @posts = Post.all.order('created_at DESC')
     end
 
     @top5posts = Post.order('title DESC').limit(5)
@@ -93,6 +107,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def tag_cloud
+    @tags = Post.tag_counts_on(:tags)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -103,6 +121,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :image_url, :category_id, :rating, :body)
+      params.require(:post).permit(:title, :content, :image_url, :category_id, :rating, :body, :tag_list, :interest_list)
     end
 end

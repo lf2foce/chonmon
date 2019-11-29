@@ -12,7 +12,7 @@ class User < ApplicationRecord
   #	#self.where(role: "admin")
   #end
 
-  scope :admin, -> { where(role: "admin") }
+  scope :admin, -> { where(role: :admin) }
   scope :user, -> { where(role: "user") }
 
   #role

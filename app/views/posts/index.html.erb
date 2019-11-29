@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-lg-3 col-md-4">
 
-          <div class="card" style="border-radius: 14px; border-color: rgb(230, 236, 240);">
+          <div class="card" style="border-radius: 6px; border-color: rgb(230, 236, 240);">
             <div class="card-header bg-transparent" style="color: #17bf63">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mr-1" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
               <strong>Search filter</strong>
@@ -52,6 +52,8 @@
             <div class="card-footer bg-transparent">Advance search</div>
           </div>
 
+
+
           <div class="mt-3">
             <h5 class="text-muted">
               <div class="">
@@ -61,6 +63,34 @@
                 Categories
               </div>
             </h5>
+            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
+            <%= check_box_tag(:tag_list) %>
+            <%= label_tag($interests[1], "tag") %>
+            <%= check_box_tag(:pet_cat) %>
+            <%= label_tag(:pet_cat, "I own a cat") %>
+            <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+            <% end %>
+
+            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
+              <%= text_field_tag :d, params[:d], placeholder: "Gần đây", class: "form-control mr-sm-2" %>
+              <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+            <% end %>
+
+            <%= form_with(url: "/search", method: :get, class: "form-inline my-2 my-lg-0 pb-2") do %>
+              <%= label_tag(:q, "Search for:") %>
+              <%= text_field_tag(:q) %>
+              <%= check_box_tag(:pet_cat) %>
+              <%= label_tag(:pet_cat, "I own a cat") %>
+              <%= submit_tag("Search", class: "btn btn-warning") %>
+            <% end %>
+
+            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Tìm kiếm", class: "form-control mr-sm-2" %>
+              <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+            <% end %>
+
+
+  
 
             <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
               <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
@@ -100,7 +130,7 @@
            
               <div class="">
 
-                <div class="card" style="width: 100%; border-radius: 14px;">
+                <div class="card" style="width: 100%; border-radius: 6px;">
                   <div class="card-header bg-transparent">
                     New post
                   </div>
@@ -137,7 +167,7 @@
               </div> <!-- end white -->
 
     
-        <div class="bg-white" style=" border-radius: 14px;">
+        <div class="bg-white" style=" border-radius: 6px;">
           <%# content_for :title, "What's do you wanna eat" %>
             <%# navigation_add 'Posts', posts_path %>
             <%#= render_navigation %>
@@ -155,8 +185,8 @@
 
 
               <div class="sticky-top" style="background-color:  #e9ebee" >
-                <div class="nav-scroller py-1 mb-2" style="border-radius: 14px 14 0 0;">
-                  <nav class="nav d-flex justify-content-between" id="ein-filter" style=" background-color: white; border-radius: 14px;">     
+                <div class="nav-scroller py-1 mb-2" style="border-radius: 6 6 0 0;">
+                  <nav class="nav d-flex justify-content-between" id="ein-filter" style=" background-color: white; border-radius: 6px;">     
                     <a class="p-2 ml-3 grab ein-active" data-toggle="pill" href="#home">
                       <i class="far fa-fire-alt" style="font-size: 1.2rem;"></i>
                       Wishlist
@@ -223,14 +253,18 @@
 
                 <div class="form-edit-user">
                     
-                <p>Bạn yêu thích cộng đồng chonmon và muốn nó trở nên lớn mạnh hơn?</p>
-                <a class="btn btn-sm btn-outline-secondary  badge-pill" href="#" role="button">Donate us</a>
-                <hr class="my-4">
-                <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="img-fluid">
-              </div>
+                  <p>Bạn yêu thích cộng đồng chonmon và muốn nó trở nên lớn mạnh hơn?</p>
+                  <a class="btn btn-sm btn-outline-secondary  badge-pill" href="#" role="button">Donate us</a>
+                  <hr class="my-4">
+                  <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="img-fluid">
+                </div>
 
+              </div>
+   
+
+    
             </div>
-          </div>
+            
           
         
     </div> <!-- end of row -->
