@@ -93,7 +93,7 @@
   
 
             <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
-              <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name", class: "form-control mr-sm-2" %>
+              <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name pg_search", class: "form-control mr-sm-2" %>
               <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
             <% end %>
 
@@ -348,3 +348,5 @@ console.log(filterItems('ang', fruits)); // ['mango', 'orange']
  
 </script>
 
+</div>
+</div>

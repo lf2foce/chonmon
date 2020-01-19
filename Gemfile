@@ -25,6 +25,7 @@ gem 'devise'
 gem 'pg_search'
 gem 'faker'
 gem 'will_paginate'
+gem 'geocoder'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 

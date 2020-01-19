@@ -8,14 +8,7 @@ class PostsController < ApplicationController
   def index
      @comment = Comment.new
     #@posts = Post.all
-    if params[:filter]
-      @posts = Post.search_by_title(params[:filter])
-      @count = @posts.count
-    else
-      #@posts = Post.all
-      @posts = Post.paginate(:page => params[:page], :per_page => 20)
-      redirect_to root_path if @posts.empty?
-    end
+ 
 
     #test search
     if params[:search]
@@ -39,9 +32,27 @@ class PostsController < ApplicationController
       format.json { render :show, status: :created, location: @post }
     end
 
+    if params[:filter]
+      @posts = Post.search_by_title(params[:filter])
+      @count = @posts.count
+    #else
+    #  #@posts = Post.all
+    #  @posts = Post.paginate(:page => params[:page], :per_page => 20)
+    #  redirect_to root_path if @posts.empty?
+    end
 
 
+  end
+  #test them xem tnao
+  def search
+    if params[:search].blank?  
+      redirect_to(root_path, alert: "Empty field!") and return  
+    else  
+      #@parameter = params[:search].downcase  
+      #@results = Post.all.where("lower(title) LIKE :search", search: "%#{@parameter}%") 
 
+      @results = Post.joins(:category).search(params[:search]).order("categories.name DESC")
+    end  
   end
 
   # GET /posts/1
@@ -110,6 +121,14 @@ class PostsController < ApplicationController
   def tag_cloud
     @tags = Post.tag_counts_on(:tags)
   end
+
+  def tagged
+  if params[:tag].present?
+    @posts = Post.tagged_with(params[:tag])
+  else
+    @posts = Post.all
+  end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

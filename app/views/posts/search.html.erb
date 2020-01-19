@@ -1,0 +1,12 @@
+
+
+
+<h3>Search Result</h3>  
+
+    <% @results.each do |result| %>  
+        <%= result.title %> Category: <%= result.category.name %>
+
+        <%# result.tag_list.each do |t| %>
+        	<%#= results.name %>
+        <%# end %> </br>
+    <% end %>

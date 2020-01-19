@@ -15,12 +15,13 @@
     
     <%= post.content %></br>
     <%= post.interest_list %>
-    <%= post.tag_list %>
     
+      <% post.tags.each do |t| %>
+        <span class="badge badge-secondary">#<%= t.name %></span>
+        <span class="badge badge-secondary">#<%= link_to t.name, tagged_path(tag: t) %></span>
 
-    <span class="badge badge-secondary"># tag1</span>
-    <span class="badge badge-secondary"># tag2</span>
-    <span class="badge badge-secondary"># tag1</span>
+      <% end %>
+    
 
     <span class="badge  badge-warning">Spacious</span>
     <span class="badge  badge-success">Pizza</span>

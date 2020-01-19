@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   resources :categories
   get 'welcome/index'
   root 'welcome#index'
+
+  get '/tagged', to: "posts#tagged", as: :tagged
+
+  get '/search' => 'posts#search', :as => 'search_page'
+
   mount ActionCable.server, at: '/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
