@@ -43,23 +43,24 @@ class PostsController < ApplicationController
     end
 
     #thu test category
-    @tags = ["cơm", "cafe"]
-    # worked
-    #if params[:basic]
-    #  @posts = Post.where("posts.title LIKE :search OR posts.content LIKE :search", search: "%#{params[:basic]}%") 
-    #  flash[:notice] = "There are <b>#{@posts.count}</b> in this category".html_safe
-    #  
-    #else
-    #  @posts = Post.all
-    #end
-
+    @tags = ["cơm", "cafe", "pizza"]
     if params[:basic]
-      @posts = Post.where("title LIKE ? OR content LIKE ?", "%" + params[:basic] + "%", "%" + params[:basic] + "%") 
+      @posts = Post.where("posts.title LIKE :search OR posts.content LIKE :search", search: "%#{params[:basic]}%")
+      .order("created_at DESC") 
       flash[:notice] = "There are <b>#{@posts.count}</b> in this category".html_safe
       
     else
       @posts = Post.all
     end
+
+    #still worked
+    #if params[:basic]
+    #  @posts = Post.where("title LIKE ? OR content LIKE ?", "%" + params[:basic] + "%", "%" + params[:basic] + "%") 
+    #  flash[:notice] = "There are <b>#{@posts.count}</b> in this category".html_safe
+    #  
+    #else
+    #  @posts = Post.all
+    #end
 
 
 

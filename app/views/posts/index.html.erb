@@ -13,7 +13,7 @@
               <strong>Search filter</strong>
             </div>
             <div class="card-body">
-              <h5> Find Product by Tags </h5>
+              <h5> Popular Tags </h5>
 
               <% @tags.each do |tag| %>
                 <%= link_to "##{tag}", posts_path(:basic => "#{tag}") %>
