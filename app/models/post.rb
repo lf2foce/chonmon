@@ -40,10 +40,10 @@ class Post < ApplicationRecord
     end
   end
   # test search pg
-  def self.search(search)
-    where("title LIKE ?", "%#{search}%") 
-    where("content LIKE ?", "%#{search}%")
-  end
+  #def self.search(search)
+  #  where("title LIKE ?", "%#{search}%") 
+  #  where("content LIKE ?", "%#{search}%")
+  #end
 
   def self.recently(recently)
     Post.last_n_days(Time.now + 1 - recently.to_i.days)
@@ -56,4 +56,7 @@ class Post < ApplicationRecord
                                           interests: [:name],
                                           tags: [:name]
                                         }
+  def self.search(search)  
+     where("lower(posts.title) LIKE :search OR lower(categories.name) LIKE :search", search: "%#{search.downcase}%").uniq   
+  end                                      
 end

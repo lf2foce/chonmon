@@ -13,7 +13,16 @@
               <strong>Search filter</strong>
             </div>
             <div class="card-body">
+              <h5> Find Product by Tags </h5>
+
+              <% @tags.each do |tag| %>
+                <%= link_to "##{tag}", posts_path(:basic => "#{tag}") %>
+              <% end %>
+
+
               <h5 class="card-title">Categories</h5>
+
+              
 
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="customCheck1">

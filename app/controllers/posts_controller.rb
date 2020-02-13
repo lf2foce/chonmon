@@ -32,6 +32,7 @@ class PostsController < ApplicationController
       format.json { render :show, status: :created, location: @post }
     end
 
+
     if params[:filter]
       @posts = Post.search_by_title(params[:filter])
       @count = @posts.count
@@ -41,17 +42,38 @@ class PostsController < ApplicationController
     #  redirect_to root_path if @posts.empty?
     end
 
+    #thu test category
+    @tags = ["cơm", "cafe"]
+    # worked
+    #if params[:basic]
+    #  @posts = Post.where("posts.title LIKE :search OR posts.content LIKE :search", search: "%#{params[:basic]}%") 
+    #  flash[:notice] = "There are <b>#{@posts.count}</b> in this category".html_safe
+    #  
+    #else
+    #  @posts = Post.all
+    #end
+
+    if params[:basic]
+      @posts = Post.where("title LIKE ? OR content LIKE ?", "%" + params[:basic] + "%", "%" + params[:basic] + "%") 
+      flash[:notice] = "There are <b>#{@posts.count}</b> in this category".html_safe
+      
+    else
+      @posts = Post.all
+    end
+
+
+
 
   end
   #test them xem tnao
-  def search
+  def search #joins work
     if params[:search].blank?  
       redirect_to(root_path, alert: "Empty field!") and return  
     else  
       #@parameter = params[:search].downcase  
       #@results = Post.all.where("lower(title) LIKE :search", search: "%#{@parameter}%") 
 
-      @results = Post.joins(:category).search(params[:search]).order("categories.name DESC")
+      @results = Post.joins(:category).search(params[:search])
     end  
   end
 
