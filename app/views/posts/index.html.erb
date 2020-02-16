@@ -15,9 +15,9 @@
             <div class="card-body">
               <h5> Popular Tags </h5>
 
-              <% @tags.each do |tag| %>
-                <%= link_to "##{tag}", posts_path(:basic => "#{tag}") %>
-              <% end %>
+              <%# @tags.each do |tag| %>
+                <%#= link_to "##{tag}", posts_path(:basic => "#{tag}") %>
+              <%# end %>
 
 
               <h5 class="card-title">Categories</h5>
@@ -100,8 +100,8 @@
 
 
   
-
-            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
+            #pg search
+            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", remote: true, method: :get do %>
               <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name pg_search", class: "form-control mr-sm-2" %>
               <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
             <% end %>
@@ -215,7 +215,12 @@
               <div class="tab-content">
                 <div class="tab-pane container active" id="home">
                   <div class="row">
-                    <%= render @posts %>
+                    <div id="posts">
+                      <%#= render @posts %>
+                      <%= render partial: "post", collection: @posts %>
+                      <%#= render 'post', posts: @posts %>
+
+                    </div>
                   </div>
                   <div class="apple_pagination">
                     <%#= will_paginate @posts %>

@@ -11,37 +11,46 @@ class PostsController < ApplicationController
  
 
     #test search
-    if params[:search]
-      @posts = Post.search(params[:search]).order("created_at DESC")
-    else
-      @posts = Post.all.order('created_at DESC')
-    end
+    #if params[:search]
+    #  @posts = Post.search(params[:search]).order("created_at DESC")
+    #else
+    #  @posts = Post.all.order('created_at DESC')
+    #end
+    
     #test search
-    if params[:d]
-      @posts = Post.recently(params[:d]).order("created_at DESC")
-    else
-      @posts = Post.all.order('created_at DESC')
-    end
+    #if params[:d]
+    #  @posts = Post.recently(params[:d]).order("created_at DESC")
+    #else
+    #  @posts = Post.all.order('created_at DESC')
+    #end
 
     @top5posts = Post.order('title DESC').limit(5)
     @all_posts = Post.all
     
     @post = current_user.posts.build
     if @post.save 
-      format.html { redirect_to @post, notice: 'Post was successfully created.' }
-      format.json { render :show, status: :created, location: @post }
+      redirect_to @post, notice: 'Post was successfully created.'
+      #format.json { render :show, status: :created, location: @post }
     end
 
 
     if params[:filter]
       @posts = Post.search_by_title(params[:filter])
       @count = @posts.count
-    #else
-    #  #@posts = Post.all
-    #  @posts = Post.paginate(:page => params[:page], :per_page => 20)
-    #  redirect_to root_path if @posts.empty?
+    else
+      @posts = Post.all 
+      #@posts = Post.paginate(:page => params[:page], :per_page => 20)
+      #redirect_to root_path if @posts.empty?
+    end
+    respond_to do |format|
+        format.html
+        format.js
     end
 
+
+  end
+
+  def click_tag
     #thu test category
     @tags = ["cơm", "cafe", "pizza"]
     if params[:basic]
@@ -62,11 +71,9 @@ class PostsController < ApplicationController
     #  @posts = Post.all
     #end
 
-
-
-
   end
   #test them xem tnao
+  
   def search #joins work
     if params[:search].blank?  
       redirect_to(root_path, alert: "Empty field!") and return  
