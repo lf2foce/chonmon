@@ -1,0 +1,6 @@
+function replacePosts (innerHTML) {
+  const posts = document.getElementById('posts');
+  posts.innerHTML = innerHTML;
+}
+//replacePosts("<%= j render 'search_post', posts: @posts %>");
+replacePosts("<%= j render @posts %>");
