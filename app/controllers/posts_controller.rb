@@ -17,12 +17,7 @@ class PostsController < ApplicationController
     #  @posts = Post.all.order('created_at DESC')
     #end
     
-    #test search
-    #if params[:d]
-    #  @posts = Post.recently(params[:d]).order("created_at DESC")
-    #else
-    #  @posts = Post.all.order('created_at DESC')
-    #end
+
 
     @top5posts = Post.order('title DESC').limit(5)
     @all_posts = Post.all
@@ -47,10 +42,20 @@ class PostsController < ApplicationController
         format.js
     end
 
+        #test search
+    if params[:category]
+      @posts = Post.where("posts.category_id IN (?)", params[:category])
+    else
+      @posts = Post.all
+    end
+
+    @tags = ["cơm", "cafe", "pizza"]
+
 
   end
 
   def click_tag
+
     #thu test category
     @tags = ["cơm", "cafe", "pizza"]
     if params[:basic]
@@ -61,6 +66,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+    render 'index'
 
     #still worked
     #if params[:basic]
@@ -72,8 +78,12 @@ class PostsController < ApplicationController
     #end
 
   end
+
+  def recent
+    @posts = Post.last_5_days
+    render action: :index
+  end
   #test them xem tnao
-  
   def search #joins work
     if params[:search].blank?  
       redirect_to(root_path, alert: "Empty field!") and return  

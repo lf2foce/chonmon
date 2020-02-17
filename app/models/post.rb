@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   scope :last_n_days, ->(days) {where('created_at > ?', days)}
+  scope :last_5_days, ->{order('created_at DESC')}
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :interests, :categories
