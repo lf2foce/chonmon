@@ -22,20 +22,23 @@
 
               <h5 class="card-title">Categories</h5>
 
-              
+              <%= form_tag posts_path, class: "form-check-test", method: :get, remote: true do %>
+                <div class="custom-control custom-checkbox">
+                  <%= check_box_tag 'category[]', "1", false, id: "customCheck4", class: "custom-control-input"  %>
+                  <label class="custom-control-label" for="customCheck4">Food</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <%= check_box_tag 'category[]', "2", false, id: "customCheck5", class: "custom-control-input" %>
+                  <label class="custom-control-label" for="customCheck5">Drink</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <%= check_box_tag 'category[]', "3", false, id: "customCheck6", class: "custom-control-input" %>
+                  <label class="custom-control-label" for="customCheck6">Coffee</label>
+                </div>
+                <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+                  
+              <% end %>
 
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Food</label>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck2">
-                <label class="custom-control-label" for="customCheck2">Drink</label>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                <label class="custom-control-label" for="customCheck3">Coffee</label>
-              </div>
               
               <h5 class="card-title mt-2">Location</h5>
 
@@ -72,14 +75,8 @@
                 Categories
               </div>
             </h5>
-            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", method: :get do %>
-              <%#= label_tag :category, 'Food' %>
-              <%= check_box_tag 'category[]', "1", "Food" %>
-              <%= check_box_tag 'category[]', "2" %>
-              <%= check_box_tag 'category[]', "3" %>
-  
-              <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
-            <% end %>
+            
+
 
             <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
               <%= text_field_tag :d, params[:d], placeholder: "Gần đây", class: "form-control mr-sm-2" %>
@@ -363,6 +360,7 @@ console.log(filterItems('ang', fruits)); // ['mango', 'orange']
 
  
 </script>
+
 
 </div>
 </div>

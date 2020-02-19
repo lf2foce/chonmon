@@ -37,16 +37,18 @@ class PostsController < ApplicationController
       #@posts = Post.paginate(:page => params[:page], :per_page => 20)
       #redirect_to root_path if @posts.empty?
     end
-    respond_to do |format|
-        format.html
-        format.js
-    end
+    
 
         #test search
     if params[:category]
       @posts = Post.where("posts.category_id IN (?)", params[:category])
     else
       @posts = Post.all
+    end
+
+    respond_to do |format|
+        format.html
+        format.js
     end
 
     @tags = ["cơm", "cafe", "pizza"]

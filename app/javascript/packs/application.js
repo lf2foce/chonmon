@@ -14,6 +14,10 @@ require("@rails/actiontext")
 window.jQuery = $;
 window.$ = $;
 
+import Rails from "@rails/ujs";
+window.Rails = Rails;
+
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -46,3 +50,15 @@ console.log("xx");
 $(function () {
   console.log('jquery worked');
 });
+
+$(function () {
+  var checkBoxes = document.querySelectorAll(".form-check-test");
+  var form = document.querySelector('form');
+  
+  for (const check of checkBoxes) {
+  check.addEventListener( 'change', function() {
+    Rails.fire(form, 'submit');
+    //document.querySelector("form").submit()
+  });
+  }
+});  
