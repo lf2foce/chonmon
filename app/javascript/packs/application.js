@@ -41,7 +41,6 @@ document.addEventListener("turbolinks:load",() => {
 	console.log("from wb");
 })
 
-console.log("xx");
 //$(document).on('turbolinks:load', function() {
 //	$('[data-toggle="tooltip"]').tooltip()
 //	$('[data-toggle="popover"]').popover()
@@ -51,14 +50,14 @@ $(function () {
   console.log('jquery worked');
 });
 
-$(function () {
+document.addEventListener("turbolinks:load",() => {
   var checkBoxes = document.querySelectorAll(".form-check-test");
-  var form = document.querySelector('form');
+  var form = document.querySelector('.form-check-test');
   
   for (const check of checkBoxes) {
-  check.addEventListener( 'change', function() {
-    Rails.fire(form, 'submit');
-    //document.querySelector("form").submit()
-  });
+	  check.addEventListener( 'change', function() {
+	    Rails.fire(form, 'submit');
+	    //document.querySelector("form").submit()
+	  });
   }
-});  
+})

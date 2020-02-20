@@ -29,8 +29,8 @@ class PostsController < ApplicationController
     end
 
 
-    if params[:filter]
-      @posts = Post.search_by_title(params[:filter])
+    if params[:pg]
+      @posts = Post.search_by_title(params[:pg])
       @count = @posts.count
     else
       @posts = Post.all 
@@ -182,6 +182,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :image_url, :category_id, :rating, :body, :tag_list, :interest_list)
+      params.require(:post).permit(:title, :content, :image_url, :category_id, :rating, :body, :tag_list, :interest_list, :image)
     end
 end

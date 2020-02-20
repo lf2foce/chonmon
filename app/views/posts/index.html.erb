@@ -6,6 +6,18 @@
 <div class="container"> 
       <div class="row">
         <div class="col-lg-3 col-md-4">
+          <div class="card mb-2" style="border-radius: 6px; background-color: #febb02;">
+            <div class="card-body">
+              <h5> pg Search </h5>
+                <%= form_tag posts_path, class: "", remote: true, method: :get do %>
+                  <div class="form-group">
+                  <%= text_field_tag "filter", params[:pg], placeholder: "Enter dish's name", class: "form-control" %>
+                  </div>
+                  <%= submit_tag "Search", class: "btn btn-primary" %>
+                <% end %>
+
+            </div>
+          </div>
 
           <div class="card" style="border-radius: 6px; border-color: rgb(230, 236, 240);">
             <div class="card-header bg-transparent" style="color: #17bf63">
@@ -35,7 +47,7 @@
                   <%= check_box_tag 'category[]', "3", false, id: "customCheck6", class: "custom-control-input" %>
                   <label class="custom-control-label" for="customCheck6">Coffee</label>
                 </div>
-                <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+                <%#= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
                   
               <% end %>
 
@@ -78,31 +90,20 @@
             
 
 
-            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
-              <%= text_field_tag :d, params[:d], placeholder: "Gần đây", class: "form-control mr-sm-2" %>
-              <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
-            <% end %>
+            <%#= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
+              <%#= text_field_tag :d, params[:d], placeholder: "Gần đây", class: "form-control mr-sm-2" %>
+              <%#= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+            <%# end %>
 
-            <%= form_with(url: "/search", method: :get, class: "form-inline my-2 my-lg-0 pb-2") do %>
-              <%= label_tag(:q, "Search for:") %>
-              <%= text_field_tag(:q) %>
-              <%= check_box_tag(:pet_cat) %>
-              <%= label_tag(:pet_cat, "I own a cat") %>
-              <%= submit_tag("Search", class: "btn btn-warning") %>
-            <% end %>
 
-            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Tìm kiếm", class: "form-control mr-sm-2" %>
-              <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
-            <% end %>
+            <%#= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
+              <%#= text_field_tag :search, params[:search], placeholder: "Tìm kiếm", class: "form-control mr-sm-2" %>
+              <%#= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
+            <%# end %>
 
 
   
-            #pg search
-            <%= form_tag posts_path, class: "form-inline my-2 my-lg-0 ", remote: true, method: :get do %>
-              <%= text_field_tag "filter", params[:filter], placeholder: "Enter dish's name pg_search", class: "form-control mr-sm-2" %>
-              <%= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
-            <% end %>
+
 
             <div class="">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
