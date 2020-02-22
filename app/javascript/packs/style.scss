@@ -1,3 +1,5 @@
+
+
 @import "_custom.scss";
 @import "bootstrap/scss/bootstrap.scss";
 @import "posts.scss";
@@ -13,6 +15,8 @@
 @import "FontAwesome/regular.scss";
 @import "FontAwesome/solid.scss";
 
+//$theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
+//@import "simple_form-bootstrap/simple_form-bootstrap";
 
 .btn-ein {
   border: 0px solid black;

@@ -1,0 +1,153 @@
+<div class="col-lg-8 col-md-8">
+          <div class="row ">            
+            <div class="col-lg-12 rounded-lg" >
+              
+              
+           
+              <div class="">
+
+                <div class="card" style="width: 100%; border-radius: 6px;">
+                  <div class="card-header bg-transparent">
+                    New post
+                  </div>
+                  <div class="card-body" style="padding: 0;">
+
+                    <div class="media form-edit-user align-items-center">
+                      <img class="m-3 avatar" src="https://scontent-hkg3-2.cdninstagram.com/vp/34469fed49c21ad9ecdf2a2439359905/5E476D67/t51.2885-19/s150x150/12331788_1668091390073421_743128638_a.jpg?_nc_ht=scontent-hkg3-2.cdninstagram.com" alt="Generic placeholder image">
+                      <div class="media-body ">
+                        
+                        <p class="text-muted" style="font-size: 1.5em;" data-toggle="modal" data-target="#new_post_modal">What's happening? </p>
+                        
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div> <!-- end row card -->
+              <div class="m-3">
+                <% if @count %>  
+                  <% if @count >0 %>
+                  <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                  <strong>Nice!</strong> We found <%= @count %> results.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <% else %>
+
+                  <button type="button" class="btn btn-warning mt-2 mb-2">
+                    Result <span class="badge badge-light">0</span>
+                  </button>
+                  <% end %>
+                <% end %>
+              </div> <!-- end white -->
+
+    
+        <div class="bg-white" style=" border-radius: 6px;">
+          <%# content_for :title, "What's do you wanna eat" %>
+            <%# navigation_add 'Posts', posts_path %>
+            <%#= render_navigation %>
+          <div class=""> <!-- dang la p-3 -->
+
+
+
+                
+                
+
+
+        
+
+            <div class="rounded-lg bg-grey">
+
+
+              <div class="sticky-top" style="background-color:  #e9ebee" >
+                <div class="nav-scroller py-1 mb-2" style="border-radius: 6 6 0 0;">
+                  <nav class="nav d-flex justify-content-between" id="ein-filter" style=" background-color: white; border-radius: 6px;">     
+                    <a class="p-2 ml-3 grab ein-active" data-toggle="pill" href="#home">
+                      <i class="far fa-fire-alt" style="font-size: 1.2rem;"></i>
+                      Wishlist
+                    </a>
+                    <a class="p-2 grab" data-toggle="pill" href="#menu2">
+                      <i class="fas fa-location" style="font-size: 1.2rem;"></i>
+                      Nearby</a>
+                    <a class="p-2 grab" href="#">
+                       Trending</a>
+                    <a class="p-2 grab" href="#">Hightest rated</a>
+                    <a class="p-2 grab" href="#">Suggestion</a>
+                    <%= link_to "Lastest", recent_posts_path, class: "p-2 grab" %>
+              
+                  </nav>
+                </div>
+              </div>  
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane container active" id="home">
+                  <div class="row">
+                    <div id="posts">
+                      <%= render @posts %>
+                      <%#= render partial: "post", collection: @posts %>
+                      <%#= render 'post', posts: @posts %>
+
+                    </div>
+                  </div>
+                  <div class="apple_pagination">
+                    <%#= will_paginate @posts %>
+                  </div>
+                </div>
+                
+                
+                <div class="tab-pane container" id="menu1">
+                  <div class="row">
+                    <%#= render @all_posts %> 
+                  </div>
+                </div>
+                  
+                  
+                <div class="tab-pane container" id="menu2">
+                  <div class="row"> 
+                    <%#= render @top5posts %>
+                  </div>  
+                </div>
+              </div>
+            </div>   <!-- end white -->
+          </div> <!-- end p-3 --> 
+        </div>    <!-- end of row -->
+        </div>   <!-- end col -lg-8 -->
+
+            
+            <div class="col-lg-12" style="background-color: #e9ebee">
+              <div class="">
+                
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" style="border: none; background-color: white;  border-radius: 2rem 0 0 2rem; padding-left: 20px;">
+                      <i class="far fa-search" style="font-size: 1.2rem;"></i>
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search chonmon" style="border: none; box-shadow:none !important; border-radius: 0 2rem 2rem 0;">
+                </div>
+
+                <div class="search-box"> 
+    
+                  <input placeholder="Search chonmon" type="text" class="form-control">  
+                  
+                </div>
+
+                <div class="form-edit-user">
+                    
+                  <p>Bạn yêu thích cộng đồng chonmon và muốn nó trở nên lớn mạnh hơn?</p>
+                  <a class="btn btn-sm btn-outline-secondary  badge-pill" href="#" role="button">Donate us</a>
+                  <hr class="my-4">
+                  <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="img-fluid">
+                </div>
+
+              </div>
+   
+
+    
+            </div>
+            
+          
+        
+    </div> <!-- end of row -->
+  </div> <!-- end of container-fluid -->

@@ -60,4 +60,18 @@ document.addEventListener("turbolinks:load",() => {
 	    //document.querySelector("form").submit()
 	  });
   }
+
+  
 })
+
+document.addEventListener("turbolinks:load",() => {
+var checkBoxes2 = document.querySelectorAll("form.simple_form");
+  var form2 = document.querySelector('form.simple_form');
+  
+  for (const check2 of checkBoxes2) {
+	  check2.addEventListener( 'change', function() {
+	    Rails.fire(form2, 'submit');
+	    //document.querySelector("form").submit()
+	  });
+  }
+  })

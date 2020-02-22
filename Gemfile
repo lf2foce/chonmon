@@ -26,7 +26,7 @@ gem 'pg_search'
 gem 'faker'
 gem 'will_paginate'
 gem 'geocoder'
-
+gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 # Use Active Storage variant

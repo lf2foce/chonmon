@@ -53,7 +53,7 @@
   <p>
     <strong>Image:</strong>
     <br>
-    <%= image_tag @post.image %>
+    <%= image_tag @post.image.variant(resize: "500x500") %>
   </p>
 <% end %>
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	  	resources :likes
       collection do
         get :recent
+        get :tagged_with
       end
 	  end
 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
 
 #test
   get '/tag', to: "posts#click_tag", as: :tag
+
 
   mount ActionCable.server, at: '/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

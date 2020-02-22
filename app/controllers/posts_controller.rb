@@ -6,19 +6,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-     @comment = Comment.new
-    #@posts = Post.all
+    @comment = Comment.new
  
-
-    #test search
-    #if params[:search]
-    #  @posts = Post.search(params[:search]).order("created_at DESC")
-    #else
-    #  @posts = Post.all.order('created_at DESC')
-    #end
-    
-
-
     @top5posts = Post.order('title DESC').limit(5)
     @all_posts = Post.all
     
@@ -28,36 +17,18 @@ class PostsController < ApplicationController
       #format.json { render :show, status: :created, location: @post }
     end
 
-
-    if params[:pg]
-      @posts = Post.search_by_title(params[:pg])
-      @count = @posts.count
-    else
-      @posts = Post.all 
-      #@posts = Post.paginate(:page => params[:page], :per_page => 20)
-      #redirect_to root_path if @posts.empty?
-    end
+    handle_search_name
+    handle_filters
     
-
-        #test search
-    if params[:category]
-      @posts = Post.where("posts.category_id IN (?)", params[:category])
-    else
-      @posts = Post.all
-    end
-
     respond_to do |format|
         format.html
         format.js
     end
 
     @tags = ["cơm", "cafe", "pizza"]
-
-
   end
 
   def click_tag
-
     #thu test category
     @tags = ["cơm", "cafe", "pizza"]
     if params[:basic]
@@ -85,17 +56,14 @@ class PostsController < ApplicationController
     @posts = Post.last_5_days
     render action: :index
   end
-  #test them xem tnao
-  def search #joins work
-    if params[:search].blank?  
-      redirect_to(root_path, alert: "Empty field!") and return  
-    else  
-      #@parameter = params[:search].downcase  
-      #@results = Post.all.where("lower(title) LIKE :search", search: "%#{@parameter}%") 
 
-      @results = Post.joins(:category).search(params[:search])
-    end  
+  def tagged_with
+    if params[:post_tag].present?
+      @posts = Post.tagged_with(params[:post_tag])
+    end 
+      render action: :index
   end
+
 
   # GET /posts/1
   # GET /posts/1.json
@@ -173,6 +141,27 @@ class PostsController < ApplicationController
 end
 
   private
+    def handle_search_name
+      if params[:pg]
+        @posts = Post.search_by_title(params[:pg])
+        @count = @posts.count
+      else
+        @posts = Post.all 
+        #@posts = Post.paginate(:page => params[:page], :per_page => 20)
+        #redirect_to root_path if @posts.empty?
+      end
+    end
+    
+
+        #test search
+    def handle_filters    
+      #if params[:category]
+      #  @posts = Post.where("posts.category_id IN (?)", params[:category]) 
+        if params[:filter]
+          @filter = params["filter"]["types"].concat(params["filter"]["interests"]).flatten.reject(&:blank?)
+          @posts = @filter.empty? ? @posts : Post.all.tagged_with(@filter, any: true)
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])

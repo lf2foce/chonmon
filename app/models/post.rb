@@ -10,10 +10,20 @@ class Post < ApplicationRecord
 
   scope :last_n_days, ->(days) {where('created_at > ?', days)}
   scope :last_5_days, ->{order('created_at DESC')}
+  scope :last_1_year, -> {where(created_at: (Time.now.midnight - 365.day)..Time.now.midnight)}
+
+
+  #tam test chua dung dc
+  scope :including_all_tags, -> (tags) { where(matching_tag_query(tags, 'AND')) }
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :interests, :categories
-  $interests = ['spacious', 'delicious', 'not_be_back', 'Overpriced', 'rude'] #???
+  acts_as_taggable_on :interests, :types, :away, :monan
+
+  $interests = ['spacious', 'delicious', 'affordable', 'childrend friendly', 'car park', 'nice service'] 
+  $types = ['Tea & coffee', 'Restaurant', 'Wine & bar', 'Fast food', 'Cake']
+  $away = ['not_be_back', 'Overpriced', 'rude', 'slow']
+  $monan = ['Sea food', 'hot pot', 'pho', 'steak pizza rib', 'vegan', 'Meat and Poultry']
+
 
   after_commit :create_hash_tags, on: [:create]
   after_commit :update_hash_tags, on: [:update]
@@ -58,6 +68,11 @@ class Post < ApplicationRecord
                                           interests: [:name],
                                           tags: [:name]
                                         }
+  
+  def matching_tag_query(tags, condition_separator = 'OR')
+    tags.map { |tag| "(posts.category_id LIKE '%#{tag}%')" }.join(" #{condition_separator} ")
+  end
+
   def self.search(search)  
      where("lower(posts.title) LIKE :search OR lower(categories.name) LIKE :search", search: "%#{search.downcase}%").uniq   
   end                                      

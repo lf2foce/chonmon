@@ -5,329 +5,52 @@
 
 <div class="container"> 
       <div class="row">
-        <div class="col-lg-3 col-md-4">
-          <div class="card mb-2" style="border-radius: 6px; background-color: #febb02;">
-            <div class="card-body">
-              <h5> pg Search </h5>
-                <%= form_tag posts_path, class: "", remote: true, method: :get do %>
+        <%= render partial: 'sidebar' %>
+        <%= render partial: 'main' %>
+
+        <div class="modal fade" id="new_post_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New food</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= form_with(model: @post, local: true) do |form| %>
+
                   <div class="form-group">
-                  <%= text_field_tag "filter", params[:pg], placeholder: "Enter dish's name", class: "form-control" %>
+                    <%= form.label :title %>
+                    <%= form.text_field :title, class: 'form-control' %>
                   </div>
-                  <%= submit_tag "Search", class: "btn btn-primary" %>
+
+                  <div class="form-group">
+                    <%= form.label :content %>
+                    <%= form.text_area :content, class: 'form-control' %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= form.label :image_url %>
+                    <%= form.text_field :image_url, class: 'form-control' %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= form.label :category_id %>
+                    <%= form.text_field :category_id, class: 'form-control' %>
+                  </div>
+
+                  <div class="form-group">
+                      <%= form.submit "Create", class: "btn btn-warning" %>
+                  </div>
                 <% end %>
-
-            </div>
-          </div>
-
-          <div class="card" style="border-radius: 6px; border-color: rgb(230, 236, 240);">
-            <div class="card-header bg-transparent" style="color: #17bf63">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mr-1" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-              <strong>Search filter</strong>
-            </div>
-            <div class="card-body">
-              <h5> Popular Tags </h5>
-
-              <%# @tags.each do |tag| %>
-                <%#= link_to "##{tag}", tag_path(:basic => "#{tag}") %>
-              <%# end %>
-
-
-              <h5 class="card-title">Categories</h5>
-
-              <%= form_tag posts_path, class: "form-check-test", method: :get, remote: true do %>
-                <div class="custom-control custom-checkbox">
-                  <%= check_box_tag 'category[]', "1", false, id: "customCheck4", class: "custom-control-input"  %>
-                  <label class="custom-control-label" for="customCheck4">Food</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <%= check_box_tag 'category[]', "2", false, id: "customCheck5", class: "custom-control-input" %>
-                  <label class="custom-control-label" for="customCheck5">Drink</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <%= check_box_tag 'category[]', "3", false, id: "customCheck6", class: "custom-control-input" %>
-                  <label class="custom-control-label" for="customCheck6">Coffee</label>
-                </div>
-                <%#= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
-                  
-              <% end %>
-
+              </div>
               
-              <h5 class="card-title mt-2">Location</h5>
-
-
-              <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio1">Anywhere</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio2">Near you</label>
-              </div>
-
-
-              <form>
-                <label for="customRange1" class="mt-2">Price range</label>
-                <input type="range" class="custom-range" id="customRange1">
-
-   
-              </form>
-             
             </div>
-            <div class="card-footer bg-transparent">Advance search</div>
-          </div>
-
-
-
-          <div class="mt-3">
-            <h5 class="text-muted">
-              <div class="">
-                <a class="text-muted  " href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-                </a>
-                Categories
-              </div>
-            </h5>
-            
-
-
-            <%#= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
-              <%#= text_field_tag :d, params[:d], placeholder: "Gần đây", class: "form-control mr-sm-2" %>
-              <%#= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
-            <%# end %>
-
-
-            <%#= form_tag posts_path, class: "form-inline my-2 my-lg-0 pb-2", method: :get do %>
-              <%#= text_field_tag :search, params[:search], placeholder: "Tìm kiếm", class: "form-control mr-sm-2" %>
-              <%#= submit_tag "Search", class: "btn btn-warning my-2 my-sm-0" %>
-            <%# end %>
-
-
-  
-
-
-            <div class="">
-              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
-                <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#top_choice" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                  <%= image_tag("icons/award", size: "20x20") + " Editor choice"  %>
-
-                </a>
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                  <%= image_tag("icons/radar", size: "20x20") + " Nearby me"  %>
-                  <i class="fal fa-coffee fa-fw" style="font-size:1rem;"></i> 
-                </a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#menu2" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                  <%= image_tag("icons/star", size: "20x20") + " Highest rating"  %>
-                  </a>
-
-                <a class="nav-link grab" id="v-pills-messages-tab" data-toggle="pill" href="#menu1" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                  <%= image_tag("icons/fire", size: "20x20") + " Hot "  %>  
-                </a>
-
-              </div>
-            </div> <!-- end white -->
-          
           </div>
         </div>
 
-        <div class="col-lg-9 col-md-8">
-          <div class="row ">            
-            <div class="col-lg-8 rounded-lg" >
-              
-              
-           
-              <div class="">
-
-                <div class="card" style="width: 100%; border-radius: 6px;">
-                  <div class="card-header bg-transparent">
-                    New post
-                  </div>
-                  <div class="card-body" style="padding: 0;">
-
-                    <div class="media form-edit-user align-items-center">
-                      <img class="m-3 avatar" src="https://scontent-hkg3-2.cdninstagram.com/vp/34469fed49c21ad9ecdf2a2439359905/5E476D67/t51.2885-19/s150x150/12331788_1668091390073421_743128638_a.jpg?_nc_ht=scontent-hkg3-2.cdninstagram.com" alt="Generic placeholder image">
-                      <div class="media-body ">
-                        
-                        <p class="text-muted" style="font-size: 1.5em;" data-toggle="modal" data-target="#new_post_modal">What's happening? </p>
-                        
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div> <!-- end row card -->
-              <div class="m-3">
-                <% if @count %>  
-                  <% if @count >0 %>
-                  <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
-                  <strong>Nice!</strong> We found <%= @count %> results.
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <% else %>
-
-                  <button type="button" class="btn btn-warning mt-2 mb-2">
-                    Result <span class="badge badge-light">0</span>
-                  </button>
-                  <% end %>
-                <% end %>
-              </div> <!-- end white -->
-
-    
-        <div class="bg-white" style=" border-radius: 6px;">
-          <%# content_for :title, "What's do you wanna eat" %>
-            <%# navigation_add 'Posts', posts_path %>
-            <%#= render_navigation %>
-          <div class=""> <!-- dang la p-3 -->
-
-
-
-                
-                
-
-
-        
-
-            <div class="rounded-lg bg-grey">
-
-
-              <div class="sticky-top" style="background-color:  #e9ebee" >
-                <div class="nav-scroller py-1 mb-2" style="border-radius: 6 6 0 0;">
-                  <nav class="nav d-flex justify-content-between" id="ein-filter" style=" background-color: white; border-radius: 6px;">     
-                    <a class="p-2 ml-3 grab ein-active" data-toggle="pill" href="#home">
-                      <i class="far fa-fire-alt" style="font-size: 1.2rem;"></i>
-                      Wishlist
-                    </a>
-                    <a class="p-2 grab" data-toggle="pill" href="#menu2">
-                      <i class="fas fa-location" style="font-size: 1.2rem;"></i>
-                      Nearby</a>
-                    <a class="p-2 grab" href="#">
-                       Top 5</a>
-                    <a class="p-2 grab" href="#">Hightest rated</a>
-                    <a class="p-2 grab" href="#">Suggestion</a>
-                    <%= link_to "Lastest", recent_posts_path, class: "p-2 grab" %>
-              
-                  </nav>
-                </div>
-              </div>  
-              <!-- Tab panes -->
-              <div class="tab-content">
-                <div class="tab-pane container active" id="home">
-                  <div class="row">
-                    <div id="posts">
-                      <%= render @posts %>
-                      <%#= render partial: "post", collection: @posts %>
-                      <%#= render 'post', posts: @posts %>
-
-                    </div>
-                  </div>
-                  <div class="apple_pagination">
-                    <%#= will_paginate @posts %>
-                  </div>
-                </div>
-                
-                
-                <div class="tab-pane container" id="menu1">
-                  <div class="row">
-                    <%#= render @all_posts %> 
-                  </div>
-                </div>
-                  
-                  
-                <div class="tab-pane container" id="menu2">
-                  <div class="row"> 
-                    <%#= render @top5posts %>
-                  </div>  
-                </div>
-              </div>
-            </div>   <!-- end white -->
-          </div> <!-- end p-3 --> 
-        </div>    <!-- end of row -->
-        </div>   <!-- end col -lg-8 -->
-
-            
-            <div class="col-lg-4" style="background-color: #e9ebee">
-              <div class="">
-                
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text" style="border: none; background-color: white;  border-radius: 2rem 0 0 2rem; padding-left: 20px;">
-                      <i class="far fa-search" style="font-size: 1.2rem;"></i>
-                    </div>
-                  </div>
-                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search chonmon" style="border: none; box-shadow:none !important; border-radius: 0 2rem 2rem 0;">
-                </div>
-
-                <div class="search-box"> 
-    
-                  <input placeholder="Search chonmon" type="text" class="form-control">  
-                  
-                </div>
-
-                <div class="form-edit-user">
-                    
-                  <p>Bạn yêu thích cộng đồng chonmon và muốn nó trở nên lớn mạnh hơn?</p>
-                  <a class="btn btn-sm btn-outline-secondary  badge-pill" href="#" role="button">Donate us</a>
-                  <hr class="my-4">
-                  <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" class="img-fluid">
-                </div>
-
-              </div>
-   
-
-    
-            </div>
-            
-          
-        
-    </div> <!-- end of row -->
-  </div> <!-- end of container-fluid -->
-
-
-<div class="modal fade" id="new_post_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New food</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= form_with(model: @post, local: true) do |form| %>
-
-          <div class="form-group">
-            <%= form.label :title %>
-            <%= form.text_field :title, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= form.label :content %>
-            <%= form.text_area :content, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= form.label :image_url %>
-            <%= form.text_field :image_url, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= form.label :category_id %>
-            <%= form.text_field :category_id, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-              <%= form.submit "Create", class: "btn btn-warning" %>
-          </div>
-        <% end %>
-      </div>
-      
-    </div>
-  </div>
-</div>
 <script>
-
   $("#ein-filter .grab").click(function(){
     $("#ein-filter .grab").removeClass('ein-active');
     $(this).toggleClass('ein-active'); 
@@ -348,18 +71,7 @@ document.addEventListener("turbolinks:load",() => {
 //  .filter( ".badge-success" )
 //    .css( "background", "#c8ebcc" );
 
-//test es6
-const fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
 
-const filterItems = (needle, heystack) => {
-  let query = needle.toLowerCase();
-  return heystack.filter(item => item.toLowerCase().indexOf(query) >= 0);
-}
-
-console.log(filterItems('ap', fruits)); // ['apple', 'grapes']
-console.log(filterItems('ang', fruits)); // ['mango', 'orange']
-
- 
 </script>
 
 
