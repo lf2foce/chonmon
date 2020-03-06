@@ -142,9 +142,9 @@ end
 
   private
     def handle_search_name
-      if params[:pg]
-        @posts = Post.search_by_title(params[:pg])
-        @count = @posts.count
+      if params[:pg_search]
+        @posts = Post.search_by_title(params[:pg_search])
+        #@count = @posts.count
       else
         @posts = Post.all 
         #@posts = Post.paginate(:page => params[:page], :per_page => 20)
@@ -171,6 +171,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :image_url, :category_id, :rating, :body, :tag_list, :interest_list, :image)
+      params.require(:post).permit(:title, :content, :image_url, :category_id, :rating, :body, :tag_list, :interest_list, :image, :price, :address)
     end
 end

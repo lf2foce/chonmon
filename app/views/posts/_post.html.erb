@@ -10,12 +10,20 @@
 
     </h5>
     <span class="small text-muted" style="font-weight: 600;"> <%#= (Time.now.to_date - post.created_at.to_date).to_i %>  
-      <%= time_ago_in_words(post.created_at) %> ago
+      <%= time_ago_in_words(post.created_at) %> ago >  <%= post.address %>
     </span>
+     
+    <% if post.nearbys(5, :units => :km)%>  
+     Nearby 
+      <% post.nearbys(5, :units => :km).map do |location| %>
+       <%= link_to location.address, posts_path %>
+      <% end %> 
+    <% end %>   
+    </p>
     
     <%= post.content %></br>
     <%= link_to post.interest_list, tagged_with_posts_path(post_tag: post.interest_list) %>
-
+    
     <%# @tags.each do |tag| %>
                 <%#= link_to "##{tag}", tag_path(:basic => "#{tag}") %>
               <%# end %>

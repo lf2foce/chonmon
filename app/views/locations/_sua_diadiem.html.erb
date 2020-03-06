@@ -1,0 +1,18 @@
+<div class="container">
+
+	<%= form_for([@location.user, @location]) do |f| %>
+
+
+	      <div class="field">
+	        <%#= f.label 'current address:' %>
+	        <%#= f.text_field :address, data: {location_ID: "#{@address.id}"}, class: "styling_formholder form-control" %> 
+
+	        <%= f.text_field :address, data: {location_ID: "#{@location.id}"}, class: "styling_formholder form-control" %>
+	      </div>
+
+	
+		    <%= f.submit f.object.new_record? ? "New message" : "Update", class: "btn btn-primary" %>
+
+
+	<% end %>
+</div>

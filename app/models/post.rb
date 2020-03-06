@@ -8,9 +8,17 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  #has_many :locations, dependent: :destroy
+
+
   scope :last_n_days, ->(days) {where('created_at > ?', days)}
   scope :last_5_days, ->{order('created_at DESC')}
   scope :last_1_year, -> {where(created_at: (Time.now.midnight - 365.day)..Time.now.midnight)}
+
+#geocode
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+  validates_presence_of :address
 
 
   #tam test chua dung dc
@@ -64,7 +72,7 @@ class Post < ApplicationRecord
   include PgSearch::Model
     pg_search_scope :search_by_title, against: [:title, :content],
                     associated_against: {
-                                          categories: [:name],
+                                          types: [:name],
                                           interests: [:name],
                                           tags: [:name]
                                         }
@@ -75,5 +83,5 @@ class Post < ApplicationRecord
 
   def self.search(search)  
      where("lower(posts.title) LIKE :search OR lower(categories.name) LIKE :search", search: "%#{search.downcase}%").uniq   
-  end                                      
+  end                                    
 end

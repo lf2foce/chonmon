@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_074964) do
+ActiveRecord::Schema.define(version: 2020_03_05_031927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(version: 2019_11_26_074964) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
   create_table "post_hash_tags", force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "hash_tag_id"
@@ -94,6 +104,10 @@ ActiveRecord::Schema.define(version: 2019_11_26_074964) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.float "longitude"
+    t.float "latitude"
+    t.decimal "price"
+    t.string "address"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -135,6 +149,11 @@ ActiveRecord::Schema.define(version: 2019_11_26_074964) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "user_name"
     t.string "role"
+    t.string "full_name"
+    t.string "website"
+    t.text "bio"
+    t.integer "phone"
+    t.string "gender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
@@ -144,6 +163,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_074964) do
   add_foreign_key "comments", "posts"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "locations", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
   add_foreign_key "taggings", "tags"

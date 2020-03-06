@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locations
   devise_for :users
   
 
@@ -13,6 +14,12 @@ Rails.application.routes.draw do
 
 
   resources :categories
+  resources :users, only: [:show, :edit, :update] do
+    resources :locations
+  end
+  get '/users/:user_id/locations/:id/sua_diadiem' => 'locations#sua_diadiem', as: :sua_diadiem
+  get 'community', to: "users#community", as: :community
+  
   get 'welcome/index'
   root 'welcome#index'
 

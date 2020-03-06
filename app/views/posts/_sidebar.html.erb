@@ -4,7 +4,7 @@
               <h5> pg Search </h5>
                 <%= form_tag posts_path, class: "", remote: true, method: :get do %>
                   <div class="form-group">
-                  <%= text_field_tag "pg", params[:pg], placeholder: "Enter dish's name ", class: "form-control" %>
+                  <%= text_field_tag "pg_search", params[:pg_search], placeholder: "Enter dish's name ", class: "form-control" %>
                   </div>
                   <%= submit_tag "Search", class: "btn btn-primary" %>
                 <% end %>

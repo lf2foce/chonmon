@@ -1,0 +1,22 @@
+$('.pet-show').html("<%= j render partial: 'locations/sua_diadiem' %>");
+
+var geocoder = new google.maps.Geocoder();
+
+navigator.geolocation.getCurrentPosition(function(location) { 
+	lat = location.coords.latitude; 
+	lng = location.coords.longitude; 
+	var latlng = new google.maps.LatLng(lat, lng);
+
+    geocoder.geocode({'latLng': latlng}, function(results) {
+      var yourLocation = results[0].formatted_address ;
+      console.log(yourLocation);
+
+		$("input[data-location-id=<%= @location.id %>]").val(results[0].formatted_address);
+		
+ 
+    });
+
+});
+
+
+	$('#reload-button').click();

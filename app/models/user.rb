@@ -6,6 +6,10 @@ class User < ApplicationRecord
   #validates :user_name, presence: true, length: { minimum: 3, maximum: 16 }
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  
+  has_many :locations, dependent: :destroy
+  accepts_nested_attributes_for :locations , reject_if: proc { |attributes| attributes[:address].blank? }, allow_destroy: true
+  
   #chua chay
   #def self.is_admin?
   #	self.role ==  "admin"
@@ -14,6 +18,8 @@ class User < ApplicationRecord
 
   scope :admin, -> { where(role: :admin) }
   scope :user, -> { where(role: "user") }
+
+
 
   #role
 	  #ROLES = {0 => :guest, 1 => :user, 2 => :moderator, 3 => :admin}
