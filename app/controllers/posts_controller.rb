@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [ :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
 
 
   # GET /posts
@@ -10,11 +11,19 @@ class PostsController < ApplicationController
  
     @top5posts = Post.order('title DESC').limit(5)
     @all_posts = Post.all
+
     
-    @post = current_user.posts.build
+    if current_user
+      @post = current_user.posts.build
+      @lat = current_user.locations.last.latitude
+      @long = current_user.locations.last.longitude
+
+    
     if @post.save 
       redirect_to @post, notice: 'Post was successfully created.'
       #format.json { render :show, status: :created, location: @post }
+    end
+
     end
 
     handle_search_name

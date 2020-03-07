@@ -17,10 +17,8 @@
     
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff">
-      <a class="navbar-brand" href="#">
-        <%= image_tag("icons/papaya", size: "30x30") + " food insider"  %>
-
-      </a>
+      
+        <%= link_to image_tag("icons/papaya", size: "30x30") + " food insider", posts_path, class: "navbar-brand"  %>
 
       <div class="d-flex  align-items-center">
         
@@ -39,9 +37,13 @@
           <li class="nav-item active ">           
             
             <a class="nav-link" href="#">
-              <i class="fal fa-user fa-fw" style="font-size:1rem;"></i> 
+              <i class="fal fa-user fa-fw" style="font-size:1rem;"></i>
               Sign in <span class="sr-only">(current)</span>
             </a>
+
+           
+            
+           
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#">
@@ -75,13 +77,13 @@
 
          <% if user_signed_in? %>       
          <div class="btn-group">
-              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-leaf " aria-hidden="true"></i>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i>
                 <%= current_user.email %>
                 <%= current_user.id %>
-                <%= current_user.locations %>
               </button>
                 <div class="dropdown-menu">
+                  <%= link_to current_user.user_name, user_path(current_user), class: "dropdown-item" %>
                   <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
                   <%= link_to "Change password", edit_user_registration_path, class: "dropdown-item" %>
 
@@ -94,8 +96,12 @@
                   </div>
             </div>
         <% else %>
-                   <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-info" %>
+                    <%= link_to image_tag("icons/user", size: "20x20") + " Sign in", new_user_session_path, class: "nav-link" %>
         <% end %> 
+        
+        <% if current_user && current_user.locations.exists? %>
+          <%= current_user.locations.last.address %>
+        <% end %>
   
 <!--
     <div class="jumbotron jumbotron-fluid" style="background-image: url('https://images.unsplash.com/photo-1483664852095-d6cc6870702d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); object-fit: cover; background-repeat: no-repeat; background-size: 100%; background-position: center center;">
@@ -106,14 +112,6 @@
     </div>
   -->
 
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Edit profile", edit_user_registration_path %>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "sign in", new_user_session_path %>
-  <% end %>
 
   <%# flash.each do |name, msg| %>
     <%#= content_tag :div, msg, id: "flash_#{name}" %>

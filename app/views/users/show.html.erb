@@ -1,7 +1,11 @@
- <%= link_to image_tag("icons/location.svg", 
+<% if @location %>
+        <%= link_to image_tag("icons/location.svg", 
         size: "25x25", style: "background-color: Transparent;" ), 
         sua_diadiem_path(@location.user, @location), remote: true, 
         data:{toggle:"modal", target:".hehe", turbolinks:"false"}  %>
+
+<% end %> 
+ 
 
 
 <div class="user-profile">

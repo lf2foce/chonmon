@@ -67,9 +67,13 @@
                       <i class="far fa-fire-alt" style="font-size: 1.2rem;"></i>
                       Wishlist
                     </a>
-                    <a class="p-2 grab" data-toggle="pill" href="#menu2">
+
+                    <a class="p-2 grab" data-toggle="pill" href="#nearby">
                       <i class="fas fa-location" style="font-size: 1.2rem;"></i>
-                      Nearby</a>
+                      Nearby
+                    </a>
+
+
                     <a class="p-2 grab" href="#">
                        Trending</a>
                     <a class="p-2 grab" href="#">Hightest rated</a>
@@ -103,9 +107,18 @@
                 </div>
                   
                   
-                <div class="tab-pane container" id="menu2">
+                <div class="tab-pane container" id="nearby">
                   <div class="row"> 
                     <%#= render @top5posts %>
+                    <%#= current_user.locations.last.nearbys(10, :units => :km).map do |location| %>
+
+                        <%#= location.address  %> <%#= location.user.user_name if location.user %> 
+                       <%#= link_to location.address,  location %> 
+                       <%# end %>
+                    <%    Post.near([@lat, @long], 10).map do |post| %>
+                      <%= post.address %> ( <%= post.distance.round(2) %> km ) </br>
+                    <% end %>
+
                   </div>  
                 </div>
               </div>

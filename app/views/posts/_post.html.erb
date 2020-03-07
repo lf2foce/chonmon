@@ -74,14 +74,14 @@
 
     
     
-  
+  <% if current_user %>
     <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
     <% @like = current_user.likes.find_by(post_id: post.id) %>
     <div id="like-<%= post.id %>">
       <%= render partial: "likes/button", locals: {post: post} %>
 
     </div>
-
+  <% end %>  
   </div>
 
         <%#= link_to 'Show', post, class: "btn btn-secondary" %></td>
@@ -125,7 +125,7 @@
 
             <h5>comments</h5>
             <%= form_with(model: [post, post.comments.build]) do |f| %>
-              <%= f.text_field :content, data: {postID: "#{post.id}"} %>
+              <%= f.text_field :content, data: {postID: "#{post.id}"}, id: "#{post.id}" %>
               <%= f.submit "create", class: "comment-submit" %>
             <% end %>
                         

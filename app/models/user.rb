@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :locations, dependent: :destroy
   accepts_nested_attributes_for :locations , reject_if: proc { |attributes| attributes[:address].blank? }, allow_destroy: true
   
+
   #chua chay
   #def self.is_admin?
   #	self.role ==  "admin"
