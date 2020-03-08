@@ -110,14 +110,11 @@
                 <div class="tab-pane container" id="nearby">
                   <div class="row"> 
                     <%#= render @top5posts %>
-                    <%#= current_user.locations.last.nearbys(10, :units => :km).map do |location| %>
-
-                        <%#= location.address  %> <%#= location.user.user_name if location.user %> 
-                       <%#= link_to location.address,  location %> 
-                       <%# end %>
-                    <%    Post.near([@lat, @long], 10).map do |post| %>
-                      <%= post.address %> ( <%= post.distance.round(2) %> km ) </br>
-                    <% end %>
+                    <%= render @nearby_post %>
+                 
+                    <%#    Post.near([@lat, @long], 10).map do |post| %>
+                      <%#= post.address %> <%#= post.distance.round(2) %>
+                    <%# end %>
 
                   </div>  
                 </div>

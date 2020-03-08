@@ -1,3 +1,15 @@
+<style type="text/css">
+.edit-button {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    color: #262626;
+    font-size: 14px;
+    padding: 4px 10px;
+    font-weight: 500;
+}  
+</style>
+
 <% if @location %>
         <%= link_to image_tag("icons/location.svg", 
         size: "25x25", style: "background-color: Transparent;" ), 
@@ -7,32 +19,38 @@
 <% end %> 
  
 
+<div class="container">
 
-<div class="user-profile">
-  <div class="profile row">
-    <div class="col-md-4 avatar">
-      <div class="wrapper">
-        <img src="">
+    <div class="user-profile">
+      <div class="profile">
+        <div class="row">
+        <div class="col-md-4 avatar">
+          <div class="wrapper">
+            <img src="">
+          </div>
+        </div>
+        
+        <div class="col-md-8 basic-info">
+          <div class="">
+            <h2 class="username"><%= current_user.user_name %>
+              <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn edit-button" %>
+            </h2>
+
+            
+          </div>
+          <ul class="posts">
+            <li><span><%= current_user.posts.count %></span> posts</li>
+            <li><span>195</span> followers</li>
+            <li><span>345</span> following</li>
+          </ul>
+          <h2 class="name"><%= current_user.full_name %></h2>
+          <a class="website">einb.com</a>
+        </div>
+      </div>
       </div>
     </div>
-    
-    <div class="col-md-8 basic-info">
-      <div class="user-wrapper">
-        <h2 class="username">luanotes</h2>
-        <a class="edit-profile">
-          <button>Edit Profile</button>
-        </a>
-      </div>
-      <ul class="posts">
-        <li><span>12</span> posts</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
-      </ul>
-      <h2 class="name">Luan Nguyen</h2>
-      <a class="website">luanotes.com</a>
-    </div>
-  </div>
 </div>
+
 
 <div class="modal fade hehe" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">

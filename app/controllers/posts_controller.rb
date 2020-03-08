@@ -18,6 +18,9 @@ class PostsController < ApplicationController
       @lat = current_user.locations.last.latitude
       @long = current_user.locations.last.longitude
 
+      @nearby_post = Post.near([@lat, @long], 5)
+      #@nearby_post = Post.near([20.98, 105.81], 50)
+
     
     if @post.save 
       redirect_to @post, notice: 'Post was successfully created.'
