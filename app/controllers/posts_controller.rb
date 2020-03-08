@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @all_posts = Post.all
 
     
-    if current_user
+    if current_user && current_user.locations.present?
       @post = current_user.posts.build
       @lat = current_user.locations.last.latitude
       @long = current_user.locations.last.longitude
